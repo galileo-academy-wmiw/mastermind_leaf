@@ -4,12 +4,19 @@ enum PinColor{
   red, yellow, green, blue, black, white, empty
 }
 
+enum Answer{
+  rightSpot, rightColor, wrong, empty;
+}
+
 class GameLogic{
   //initialize class
+  List<List<PinColor>> pins = [];
+  List<PinColor> combination = [];
+  int turn = 0;
 
   GameLogic(int gameLength){
     //first, build a list for all the answers
-    List<List<PinColor>> pins = [];
+    pins = [];
 
     for(int i = 0; i < gameLength; i++){
       for(int j = 0; j < 4; j++){
@@ -17,11 +24,8 @@ class GameLogic{
       }
     }
 
-    //set up other vars
-    int turn = 0;
-
     //generate a combination
-    generateCombination();
+    combination = generateCombination();
   }
 
   //combination generate function
@@ -53,6 +57,36 @@ class GameLogic{
   //run game function
 
   //comparison function
+  List <Answer> compareAnswer(){
+    List <Answer> answers = [Answer.empty, Answer.empty, Answer.empty, Answer.empty];
+    List <bool> checkedFields = [false, false, false, false];
 
+    //check for full matches
+    for(int i = 0; i < 4; i++){
+      if(pins[turn][i] == combination[i]){
+        answers[i] = Answer.rightSpot;
+        checkedFields[i] = true;
+      }
+    }
+
+    //check for partial matches
+    for(int i = 0; i <4; i++){//loop through pins
+      for(int j = 0; j < 4; j++){//loop through combination
+        if(!checkedFields[j] && pins[turn][i] == combination[j]){
+          //TODO
+        }
+      }
+    }
+
+    //set everything else up
+    for(int i = 0; i < 4; i++){
+      if(answers[i] == Answer.empty){
+        answers[i] = Answer.wrong;
+      }
+    }
+
+
+    return answers;
+  }
 
 }
