@@ -60,20 +60,24 @@ class GameLogic{
   List <Answer> compareAnswer(){
     List <Answer> answers = [Answer.empty, Answer.empty, Answer.empty, Answer.empty];
     List <bool> checkedFields = [false, false, false, false];
+    List <bool> checkedPins = [false, false, false, false];
 
     //check for full matches
     for(int i = 0; i < 4; i++){
       if(pins[turn][i] == combination[i]){
         answers[i] = Answer.rightSpot;
         checkedFields[i] = true;
+        checkedPins[i] = true;
       }
     }
 
     //check for partial matches
     for(int i = 0; i <4; i++){//loop through pins
       for(int j = 0; j < 4; j++){//loop through combination
-        if(!checkedFields[j] && pins[turn][i] == combination[j]){
-          //TODO
+        if(!checkedFields[j] && !checkedPins[i] && pins[turn][i] == combination[j]){
+          answers[j] = Answer.rightColor;
+          checkedFields[j] = true;
+          checkedPins[i] = true;
         }
       }
     }
@@ -85,7 +89,7 @@ class GameLogic{
       }
     }
 
-
+    answers.sort();
     return answers;
   }
 
