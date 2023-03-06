@@ -53,9 +53,6 @@ class GameLogic{
     return combination;
   }
 
-
-  //run game function
-
   //comparison function
   List <Answer> compareAnswer(){
     List <Answer> answers = [Answer.empty, Answer.empty, Answer.empty, Answer.empty];
@@ -92,5 +89,4 @@ class GameLogic{
     answers.sort();
     return answers;
   }
-
 }
