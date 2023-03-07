@@ -29,27 +29,26 @@ class GameLogic{
   }
 
   //combination generate function
-  List <PinColor> generateCombination(){
+  List<PinColor> generateCombination(){
     List<PinColor> combination = [];
     for(int i = 0; i < 4; i++){
       int rand = Random().nextInt(6);
 
       //note: there's probably a better way to do this but it's literally my first time writing dart
       if(rand == 0){
-        combination[i] = PinColor.red;
+        combination.insert(i,PinColor.red);
       }else if(rand == 1){
-        combination[i] = PinColor.yellow;
+        combination.insert(i, PinColor.yellow);
       }else if(rand == 2){
-        combination[i] = PinColor.green;
+        combination.insert(i, PinColor.green);
       }else if(rand == 3){
-        combination[i] = PinColor.blue;
+        combination.insert(i, PinColor.blue);
       }else if(rand == 4){
-        combination[i] = PinColor.black;
+        combination.insert(i, PinColor.black);
       }else{
-        combination[i] = PinColor.white;
+        combination.insert(i, PinColor.white);
       }
     }
-
     return combination;
   }
 
