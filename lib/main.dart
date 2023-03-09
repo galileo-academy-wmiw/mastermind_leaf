@@ -29,6 +29,6 @@ class AppTree extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return StartScreen();
+    return GameScreen();
   }
 }
