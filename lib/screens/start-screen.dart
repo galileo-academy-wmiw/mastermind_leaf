@@ -6,14 +6,29 @@ class StartScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.yellow,
-      child: ElevatedButton(
-        child: Icon(Icons.arrow_forward),
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => AppTree())
-          );
-        },
+    return Scaffold(
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Text('MasterMind'),
+            Container(
+              child: ElevatedButton(
+                child: Column(
+                  children: [
+                    Icon(Icons.arrow_forward),
+                    Text('Start The Game')
+                  ],
+                ),
+                onPressed: () {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => AppTree())
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
