@@ -16,9 +16,24 @@ class AppRoot extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.light(),
-      home: Scaffold(
-        body: Center(child: AppTree()),
-        appBar: AppBar(title:Text("Mastermind")),
+      home: DefaultTabController(
+        length: 2,
+        child: Scaffold(
+          body: Center(child: TabBarView(
+            children: [
+              GameScreen(),
+              InfoScreen(),
+            ],
+          )),
+          appBar: AppBar(title:Text("Mastermind")),
+          bottomNavigationBar: TabBar(
+            labelColor: Colors.black,
+            tabs: [
+              Tab(icon:Icon(Icons.sports_esports)),
+              Tab(icon:Icon(Icons.info))
+            ],
+          ),
+        ),
       ),
     );
   }
