@@ -13,6 +13,7 @@ class StartScreen extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text('MasterMind'),
+            Image.asset('assets/images/seagull.jpg'),
             Container(
               child: ElevatedButton(
                 child: Column(
