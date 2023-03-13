@@ -1,5 +1,8 @@
+
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:mastermind_leaf/main.dart';
+
 
 class StartScreen extends StatelessWidget {
   const StartScreen({Key? key}) : super(key: key);
@@ -23,6 +26,7 @@ class StartScreen extends StatelessWidget {
                   ],
                 ),
                 onPressed: () {
+                  audioPlayer.play(AssetSource('audio/bleep.wav'));
                   Navigator.push(context, MaterialPageRoute(builder: (context) => AppTree())
                   );
                 },

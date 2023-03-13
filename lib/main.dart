@@ -1,4 +1,8 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
+import 'package:audioplayers/audioplayers.dart';
+
 import 'screens/game-screen.dart';
 import 'screens/info-screen.dart';
 import 'screens/score-screen.dart';
@@ -6,7 +10,10 @@ import 'screens/start-screen.dart';
 
 void main() {
   runApp(const AppRoot());
+  audioPlayer.setSource(AssetSource('audio/bleep.wav'));
 }
+
+AudioPlayer audioPlayer = new AudioPlayer();
 
 class AppRoot extends StatelessWidget {
   const AppRoot({Key? key}) : super(key: key);
