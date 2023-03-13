@@ -2,6 +2,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:mastermind_leaf/main.dart';
+import 'package:mastermind_leaf/styles/styles.dart';
 
 
 class StartScreen extends StatelessWidget {
@@ -11,28 +12,34 @@ class StartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Text('MasterMind'),
-            Image.asset('assets/images/seagull.jpg'),
-            Container(
-              child: ElevatedButton(
-                child: Column(
-                  children: [
-                    Icon(Icons.arrow_forward),
-                    Text('Start The Game')
-                  ],
-                ),
-                onPressed: () {
-                  audioPlayer.play(AssetSource('audio/bleep.wav'));
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => AppTree())
-                  );
-                },
+        child: Container(
+          color: Colors.black87,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: [
+              Container(
+                margin: EdgeInsets.all(10.0),
+                 child: Text('MasterMind', style: titleStyle,)
               ),
-            ),
-          ],
+              Image.asset('assets/images/seagull.jpg'),
+              Container(
+                child: ElevatedButton(
+                  child: Column(
+                    children: [
+                      Icon(Icons.arrow_forward),
+                      Text('Start The Game')
+                    ],
+                  ),
+                  onPressed: () {
+                    audioPlayer.play(AssetSource('audio/bleep.wav'));
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => AppTree())
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
