@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
@@ -13,7 +11,7 @@ void main() {
   audioPlayer.setSource(AssetSource('audio/bleep.wav'));
 }
 
-AudioPlayer audioPlayer = new AudioPlayer();
+AudioPlayer audioPlayer = AudioPlayer();
 
 class AppRoot extends StatelessWidget {
   const AppRoot({Key? key}) : super(key: key);
@@ -33,7 +31,7 @@ class AppTree extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
+    return const DefaultTabController(
       length: 2,
       child: Scaffold(
         body: Center(child: TabBarView(
@@ -42,7 +40,6 @@ class AppTree extends StatelessWidget {
             InfoScreen(),
           ],
         )),
-        appBar: AppBar(title:Text("Mastermind")),
         bottomNavigationBar: TabBar(
           labelColor: Colors.black,
           tabs: [

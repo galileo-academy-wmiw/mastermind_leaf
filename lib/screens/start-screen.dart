@@ -11,9 +11,9 @@ class StartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Container(
-          color: Colors.black87,
+      body: Container(
+        color: Colors.black87,
+        child: Center(
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
@@ -22,21 +22,22 @@ class StartScreen extends StatelessWidget {
                 margin: EdgeInsets.all(10.0),
                  child: Text('MasterMind', style: titleStyle,)
               ),
-              Image.asset('assets/images/seagull.jpg'),
-              Container(
-                child: ElevatedButton(
-                  child: Column(
-                    children: [
-                      Icon(Icons.arrow_forward),
-                      Text('Start The Game')
-                    ],
-                  ),
-                  onPressed: () {
-                    audioPlayer.play(AssetSource('audio/bleep.wav'));
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => AppTree())
-                    );
-                  },
+              const Image(
+                image: AssetImage('assets/images/seagull.jpg'),
+              ),
+              ElevatedButton(
+                style: startButtonStyle,
+                child: Column(
+                  children: const [
+                    Icon(Icons.arrow_forward),
+                    Text('Start The Game')
+                  ],
                 ),
+                onPressed: () {
+                  audioPlayer.play(AssetSource('audio/bleep.wav'));
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => AppTree())
+                  );
+                },
               ),
             ],
           ),
