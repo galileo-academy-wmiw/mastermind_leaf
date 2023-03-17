@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../classes/score-pin.dart';
 import '../classes/code-pin.dart';
+import 'package:mastermind_leaf/classes/game-row.dart';
 import 'package:mastermind_leaf/screens/score-screen.dart';
 
 class GameScreen extends StatelessWidget {
@@ -13,35 +14,7 @@ class GameScreen extends StatelessWidget {
       children: [
         Column(
           children: [
-            Container(
-              height: 100,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceAround,
-                children: [
-                  CodePin(),
-                  CodePin(),
-                  CodePin(),
-                  CodePin(),
-                  Container(
-                    width: 100,
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceAround,
-                      children: [
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceAround,
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: [ScorePin(), ScorePin()]),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [ScorePin(), ScorePin()],
-                        )
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            )
+            GameRow(),
           ],
         ),
         ElevatedButton(

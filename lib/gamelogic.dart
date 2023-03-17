@@ -1,6 +1,6 @@
 import 'dart:math';
 
-enum PinColor { red, yellow, green, blue, black, white, empty }
+enum PinColor {empty, red, yellow, green, blue, purple, orange}
 
 enum Answer {
   rightSpot,
@@ -39,9 +39,9 @@ List<PinColor> generateNewCode() {
     } else if (rand == 3) {
       combination.insert(i, PinColor.blue);
     } else if (rand == 4) {
-      combination.insert(i, PinColor.black);
+      combination.insert(i, PinColor.purple);
     } else {
-      combination.insert(i, PinColor.white);
+      combination.insert(i, PinColor.orange);
     }
   }
   return combination;

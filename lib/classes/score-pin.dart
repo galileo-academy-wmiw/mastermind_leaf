@@ -13,13 +13,13 @@ class ScorePin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 40,
-      width: 40,
+      height: 35,
+      width: 35,
       decoration: BoxDecoration(
         color: Colors.blue,
         shape: BoxShape.circle,
         border: Border.all(
-          width: 10,
+          width: 5,
           color: Colors.black,
           style: BorderStyle.solid,
         ),

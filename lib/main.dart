@@ -20,7 +20,7 @@ class AppRoot extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.light(),
+      theme: ThemeData.dark(),
       home: StartScreen()
     );
   }
@@ -43,8 +43,8 @@ class AppTree extends StatelessWidget {
         bottomNavigationBar: TabBar(
           labelColor: Colors.black,
           tabs: [
-            Tab(icon:Icon(Icons.sports_esports)),
-            Tab(icon:Icon(Icons.info))
+            Tab(icon:Icon(Icons.sports_esports, color: Colors.amber,)),
+            Tab(icon:Icon(Icons.info, color: Colors.amber,))
           ],
         ),
       ),
