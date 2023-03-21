@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
-import 'screens/game-screen.dart';
-import 'screens/info-screen.dart';
-import 'screens/score-screen.dart';
-import 'screens/start-screen.dart';
+import 'package:mastermind_leaf/screens/game-screen.dart';
+import 'package:mastermind_leaf/screens/info-screen.dart';
+import 'package:mastermind_leaf/screens/score-screen.dart';
+import 'package:mastermind_leaf/screens/start-screen.dart';
+import 'package:mastermind_leaf/screens/settings-screen.dart';
 
 void main() {
   runApp(const AppRoot());
@@ -31,20 +32,22 @@ class AppTree extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const DefaultTabController(
-      length: 2,
+    return DefaultTabController(
+      length: 3,
       child: Scaffold(
         body: Center(child: TabBarView(
           children: [
             GameScreen(),
             InfoScreen(),
+            SettingsScreen()
           ],
         )),
         bottomNavigationBar: TabBar(
           labelColor: Colors.black,
           tabs: [
             Tab(icon:Icon(Icons.sports_esports, color: Colors.amber,)),
-            Tab(icon:Icon(Icons.info, color: Colors.amber,))
+            Tab(icon:Icon(Icons.info, color: Colors.amber,)),
+            Tab(icon: Icon(Icons.settings, color: Colors.amber,),)
           ],
         ),
       ),

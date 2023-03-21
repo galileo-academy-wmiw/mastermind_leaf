@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 
-enum PinColor {empty, red, yellow, green, blue, purple, orange}
-
-
 class CodePin extends StatefulWidget {
   CodePin({Key? key}) : super(key: key);
 
+
   @override
   State<CodePin> createState() => _CodePinState();
+
+
+  Color getStateColor(){
+    //THIS IS BROKEN I DONT KNOW HOW TO GET DATA OUT OF MY STATE.
+    return Colors.white;//temp return type THIS IS BROKEN
+  }
+
 }
 
 class _CodePinState extends State<CodePin> {
@@ -28,6 +33,7 @@ class _CodePinState extends State<CodePin> {
             index = 1;
           }
           currentColor = pinColors[index];
+          print(currentColor);
         });
       },
       onDoubleTap: (){
@@ -38,17 +44,25 @@ class _CodePinState extends State<CodePin> {
           }
 
           currentColor = pinColors[index];
+          print(currentColor);
         });
       },
-      child: Container(
-        width: 65,
-        decoration: BoxDecoration(
-          color: currentColor,
-          shape: BoxShape.circle,
-          border: Border.all(
-            width: 5,
-            color: Colors.black,
-            style: BorderStyle.solid,
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(
+          maxHeight: 65,
+          maxWidth: 65,
+          minHeight: 30,
+          minWidth: 30,
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+            color: currentColor,
+            shape: BoxShape.circle,
+            border: Border.all(
+              width: 5,
+              color: Colors.black,
+              style: BorderStyle.solid,
+            ),
           ),
         ),
       ),

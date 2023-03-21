@@ -14,7 +14,7 @@ class GameScreen extends StatelessWidget {
       children: [
         Column(
           children: [
-            GameRow(),
+            GameRow()
           ],
         ),
         ElevatedButton(
