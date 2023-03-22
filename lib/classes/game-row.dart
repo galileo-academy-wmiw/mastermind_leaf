@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 import '../classes/score-pin.dart';
@@ -20,10 +22,14 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
 
   @override
   void initState() {
-
     flyInAnimationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 500));
 
-    flyInAnimation = Tween<double>(begin: 10, end: 0).animate(flyInAnimationController);
+    if(Random().nextBool()){
+      flyInAnimation = Tween<double>(begin: 10, end: 0).animate(flyInAnimationController);
+    }else{
+      flyInAnimation = Tween<double>(begin: -10, end: 0).animate(flyInAnimationController);
+    }
+
 
     flyInAnimationController.forward();
 
