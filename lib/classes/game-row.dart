@@ -36,6 +36,13 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
   }
 
   @override
+  void dispose() {
+    flyInAnimationController.dispose();
+    super.dispose();
+  }
+
+
+  @override
   Widget build(BuildContext context) {
 
     List<CodePin> pins = [CodePin(), CodePin(), CodePin(), CodePin()];
