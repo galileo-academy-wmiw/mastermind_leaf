@@ -13,15 +13,36 @@ class GameRow extends StatefulWidget {
   State<GameRow> createState() => _GameRowState();
 }
 
-class _GameRowState extends State<GameRow> {
+class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
+
+  late Animation flyInAnimation;
+  late AnimationController flyInAnimationController;
+
+  @override
+  void initState() {
+
+    flyInAnimationController = AnimationController(vsync: this, duration: const Duration(milliseconds: 500));
+
+    flyInAnimation = Tween<double>(begin: 10, end: 0).animate(flyInAnimationController);
+
+    flyInAnimationController.forward();
+
+    flyInAnimation.addListener(() {
+      setState(() {
+      });
+    });
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
 
     List<CodePin> pins = [CodePin(), CodePin(), CodePin(), CodePin()];
     Container test = Container();
 
-
     return Container(
+      transform: Matrix4.translationValues(flyInAnimation.value*100, 0, 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
