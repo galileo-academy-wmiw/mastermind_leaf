@@ -1,18 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
+import 'package:mastermind_leaf/classes/gamecontroller.dart';
 import 'package:mastermind_leaf/screens/game-screen.dart';
 import 'package:mastermind_leaf/screens/info-screen.dart';
 import 'package:mastermind_leaf/screens/score-screen.dart';
 import 'package:mastermind_leaf/screens/start-screen.dart';
 import 'package:mastermind_leaf/screens/settings-screen.dart';
 
+GameController gameController = GameController();
+AudioPlayer audioPlayer = AudioPlayer();
+
 void main() {
+  gameController.startNewGame(12);
   runApp(const AppRoot());
   audioPlayer.setSource(AssetSource('audio/bleep.wav'));
 }
 
-AudioPlayer audioPlayer = AudioPlayer();
+
 
 class AppRoot extends StatelessWidget {
   const AppRoot({Key? key}) : super(key: key);
