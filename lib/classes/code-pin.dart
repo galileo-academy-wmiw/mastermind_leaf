@@ -5,16 +5,15 @@ import 'package:flutter/material.dart';
 class CodePin extends StatefulWidget {
   CodePin({Key? key}) : super(key: key);
 
+  Color currentColor = Colors.black;
+
   @override
   State<CodePin> createState() => _CodePinState();
 
-  Color getStateColor() {
-    //THIS IS BROKEN I DONT KNOW HOW TO GET DATA OUT OF MY STATE.
-    return Colors.white; //temp return type THIS IS BROKEN
-  }
 }
 
 class _CodePinState extends State<CodePin> {
+
   List<Color> pinColors = [
     Colors.black,
     Colors.red,
@@ -42,7 +41,7 @@ class _CodePinState extends State<CodePin> {
             index = 1;
           }
           currentColor = pinColors[index];
-          print(currentColor);
+          widget.currentColor = currentColor;
         });
       },
       onDoubleTap: () {
@@ -53,7 +52,7 @@ class _CodePinState extends State<CodePin> {
           }
 
           currentColor = pinColors[index];
-          print(currentColor);
+          widget.currentColor = currentColor;
         });
       },
       child: ConstrainedBox(

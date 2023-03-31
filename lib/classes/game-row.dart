@@ -70,19 +70,19 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
               List<PinColor> inputPins = [];
 
               for(int i = 0; i < 4; i++){
-                if(pins[i].getStateColor() == Colors.black){
+                if(pins[i].currentColor == Colors.black){
                   inputPins.add(PinColor.empty);
-                }else if(pins[i].getStateColor() == Colors.red){
+                }else if(pins[i].currentColor == Colors.red){
                   inputPins.add(PinColor.red);
-                }else if(pins[i].getStateColor() == Colors.yellow){
+                }else if(pins[i].currentColor == Colors.yellow){
                   inputPins.add(PinColor.yellow);
-                }else if(pins[i].getStateColor() == Colors.green){
+                }else if(pins[i].currentColor == Colors.green){
                   inputPins.add(PinColor.green);
-                }else if(pins[i].getStateColor() == Colors.blue){
+                }else if(pins[i].currentColor == Colors.blue){
                   inputPins.add(PinColor.blue);
-                }else if(pins[i].getStateColor() == Colors.purple){
+                }else if(pins[i].currentColor == Colors.purple){
                   inputPins.add(PinColor.purple);
-                }else if(pins[i].getStateColor() == Colors.orange){
+                }else if(pins[i].currentColor == Colors.orange){
                   inputPins.add(PinColor.orange);
                 }
               }
