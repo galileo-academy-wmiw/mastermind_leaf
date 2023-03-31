@@ -3,9 +3,10 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 
 class CodePin extends StatefulWidget {
-  CodePin({Key? key}) : super(key: key);
+  CodePin(this.pinActive, {super.key});
 
   Color currentColor = Colors.black;
+  bool pinActive;
 
   @override
   State<CodePin> createState() => _CodePinState();
@@ -32,40 +33,43 @@ class _CodePinState extends State<CodePin> {
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          index++;
+    return AbsorbPointer(
+      absorbing: !widget.pinActive,
+      child: GestureDetector(
+        onTap: () {
+          setState(() {
+            index++;
 
-          if (index > 6) {
-            index = 1;
-          }
-          currentColor = pinColors[index];
-          widget.currentColor = currentColor;
-        });
-      },
-      onDoubleTap: () {
-        setState(() {
-          index--;
-          if (index < 1) {
-            index = 6;
-          }
+            if (index > 6) {
+              index = 1;
+            }
+            currentColor = pinColors[index];
+            widget.currentColor = currentColor;
+          });
+        },
+        onDoubleTap: () {
+          setState(() {
+            index--;
+            if (index < 1) {
+              index = 6;
+            }
 
-          currentColor = pinColors[index];
-          widget.currentColor = currentColor;
-        });
-      },
-      child: ConstrainedBox(
-          constraints: const BoxConstraints(
-            maxHeight: 65,
-            maxWidth: 65,
-            minHeight: 30,
-            minWidth: 30,
-          ),
-          child: CustomPaint(
-              painter: CodePinPainter(currentColor, colorBlindMode),
-              size: MediaQuery.of(context).size,
-          ),
+            currentColor = pinColors[index];
+            widget.currentColor = currentColor;
+          });
+        },
+        child: ConstrainedBox(
+            constraints: const BoxConstraints(
+              maxHeight: 65,
+              maxWidth: 65,
+              minHeight: 30,
+              minWidth: 30,
+            ),
+            child: CustomPaint(
+                painter: CodePinPainter(currentColor, colorBlindMode),
+                size: MediaQuery.of(context).size,
+            ),
+        ),
       ),
     );
   }

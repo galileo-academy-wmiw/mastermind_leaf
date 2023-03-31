@@ -9,7 +9,26 @@ import 'package:mastermind_leaf/screens/start-screen.dart';
 import 'package:mastermind_leaf/screens/settings-screen.dart';
 
 GameController gameController = GameController();
+GameScreen gameScreen = GameScreen();
 AudioPlayer audioPlayer = AudioPlayer();
+
+PinColor flutterColorToPinColor(Color flutterColor){
+  if(flutterColor == Colors.red){
+    return PinColor.red;
+  }else if(flutterColor == Colors.yellow){
+    return PinColor.yellow;
+  }else if(flutterColor == Colors.green){
+    return PinColor.green;
+  }else if(flutterColor == Colors.blue){
+    return PinColor.blue;
+  }else if(flutterColor == Colors.purple){
+    return PinColor.purple;
+  }else if(flutterColor == Colors.orange){
+    return PinColor.orange;
+  }else{
+    return PinColor.empty;
+  }
+}
 
 void main() {
   gameController.startNewGame(12);
@@ -42,7 +61,7 @@ class AppTree extends StatelessWidget {
       child: Scaffold(
         body: Center(child: TabBarView(
           children: [
-            GameScreen(),
+            gameScreen,
             InfoScreen(),
             SettingsScreen()
           ],

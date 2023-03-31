@@ -41,7 +41,7 @@ class GameController{
   }
 
   //comparison function
-  List<Answer> compareAnswer(List<PinColor> pins, List<PinColor> combination) {
+  List<Answer> compareAnswer(List<PinColor> pins) {
     List<Answer> answers = [
       Answer.empty,
       Answer.empty,
@@ -81,6 +81,8 @@ class GameController{
     }
 
     answers.sort(Enum.compareByIndex);
+    print(combination);
+    print(answers);
     return answers;
   }
 }
