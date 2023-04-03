@@ -91,6 +91,7 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
 
       for (int i = 0; i < 4; i++) {
         pins[i].pinActive = false;
+        pins[i].setStateCallOnStateToDisableColorSwitching();
       }
       widget.rowActive = false;
       widget.addGameRowFunction();

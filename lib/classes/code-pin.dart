@@ -8,6 +8,8 @@ class CodePin extends StatefulWidget {
   Color currentColor = Colors.black;
   bool pinActive;
 
+  VoidCallback setStateCallOnStateToDisableColorSwitching = () {};//i need to call setState() once from the gamerow once to fix a bug
+
   @override
   State<CodePin> createState() => _CodePinState();
 
@@ -31,8 +33,18 @@ class _CodePinState extends State<CodePin> {
 
   Color currentColor = Colors.black;
 
+  void callSetState(){
+    setState(() {
+
+    });
+  }
+
+
   @override
   Widget build(BuildContext context) {
+    widget.setStateCallOnStateToDisableColorSwitching = callSetState; //makes the empty setstate available outside of CodePinState
+
+
     return AbsorbPointer(
       absorbing: !widget.pinActive,
       child: GestureDetector(
