@@ -4,10 +4,10 @@ import 'package:mastermind_leaf/classes/gamecontroller.dart';
 import 'package:mastermind_leaf/main.dart';
 
 class ScorePin extends StatelessWidget {
-  ScorePin({Key? key}) : super(key: key);
+  ScorePin(this.currentColor, this.colorBlindMode);
 
-  Color currentColor = Colors.blue;
-  bool colorBlindMode = true;
+  Color currentColor;
+  bool colorBlindMode;
 
   List<Color> pinColors = flutterScorePinColors;
 
@@ -59,9 +59,9 @@ class ScorePinPainter extends CustomPainter{
       if(currentColor == pinColors[1]){
         canvas.drawArc(rectangle, 0, (pi/3)* 2, true, paint);
       }else if(currentColor == pinColors[2]){
-        canvas.drawArc(rectangle, (pi/3)*2, (pi/3)*4, true, paint);
+        canvas.drawArc(rectangle, (pi/3)*2, (pi/3)*2, true, paint);
       }else if(currentColor == pinColors[3]){
-        canvas.drawArc(rectangle, (pi/3)*4, pi*2, true, paint);
+        canvas.drawArc(rectangle, (pi/3)*4, (pi/3)*2, true, paint);
       }
     }
   }

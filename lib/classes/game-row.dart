@@ -26,6 +26,7 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
   late AnimationController flyInAnimationController;
 
   late List<CodePin> pins;
+  late List<ScorePin> scorePins;
 
   @override
   void initState() {
@@ -34,6 +35,14 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
       CodePin(widget.rowActive),
       CodePin(widget.rowActive),
       CodePin(widget.rowActive)
+    ];
+    
+    scorePins = [
+      //creates 4 empty pins
+      ScorePin(flutterScorePinColors[0], true),
+      ScorePin(flutterScorePinColors[0], true),
+      ScorePin(flutterScorePinColors[0], true),
+      ScorePin(flutterScorePinColors[0], true),
     ];
 
     flyInAnimationController = AnimationController(
@@ -88,12 +97,23 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
 
 
     if (!areThereEmptyPins) {
-
-
+      //make codepins non interactive
       for (int i = 0; i < 4; i++) {
         pins[i].pinActive = false;
         pins[i].setStateCallOnStateToDisableColorSwitching();
       }
+
+      //make scorePins the right Color
+      List<PinColor> inputs = [];
+      for(int i = 0; i < 4; i++){
+        inputs.add(gameController.flutterColorToPinColor(pins[i].currentColor));
+      }
+      List<Answer> results = gameController.compareAnswer(inputs);
+
+      for(int i = 3; i >= 0; i--){
+        scorePins[i] = ScorePin(gameController.answerToFlutterColor(results[i]), true);
+      }
+
       widget.rowActive = false;
       widget.addGameRowFunction();
       setState(() {});
@@ -133,11 +153,11 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [ScorePin(), ScorePin()]),
+                    children: [scorePins[0], scorePins[1]]),
                 Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [ScorePin(), ScorePin()]),
+                    children: [scorePins[2], scorePins[3]]),
               ],
             ),
           )

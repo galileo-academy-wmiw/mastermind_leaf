@@ -53,6 +53,8 @@ class _CodePinState extends State<CodePin> {
             widget.currentColor = currentColor;
           });
         },
+        /*
+        DOUBLE TAP IS DISABLED BECAUSE I KEPT ACCIDENTALLY DOING IT
         onDoubleTap: () {
           setState(() {
             index--;
@@ -63,7 +65,7 @@ class _CodePinState extends State<CodePin> {
             currentColor = pinColors[index];
             widget.currentColor = currentColor;
           });
-        },
+        },*/
         child: ConstrainedBox(
             constraints: const BoxConstraints(
               maxHeight: 65,

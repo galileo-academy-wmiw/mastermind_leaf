@@ -4,10 +4,12 @@ import 'package:flutter/material.dart';
 enum PinColor {empty, red, yellow, green, blue, purple, orange}
 
 enum Answer {
-  rightSpot,
-  rightColor,
+
+
+  empty,
   wrong,
-  empty;
+  rightColor,
+  rightSpot,
 }
 
 //color lists used everywhere
@@ -28,15 +30,8 @@ List<Color> flutterScorePinColors = [
   Colors.green,//all good
 ];
 
-
 class GameController{
-
-
-
   List<PinColor> combination = [PinColor.empty, PinColor.empty, PinColor.empty, PinColor.empty];
-
-
-
 
   PinColor flutterColorToPinColor(Color flutterColor){
     if(flutterColor == flutterCodePinColors[1]){
@@ -53,6 +48,22 @@ class GameController{
       return PinColor.orange;
     }else{
       return PinColor.empty;
+    }
+  }
+
+  Color answerToFlutterColor(Answer ans){
+    if(ans == Answer.empty){
+      return flutterCodePinColors[0];
+    }else if(ans == Answer.wrong){
+      return flutterCodePinColors[1];
+    }else if(ans == Answer.rightColor){
+      return flutterCodePinColors[2];
+    }else if(ans == Answer.rightSpot){
+      return flutterCodePinColors[3];
+    }else{
+      //THIS SHOULD NEVER EVER HAPPEN, it's an emergency return path
+      print('something went wrong in answerToFlutterColor, ans is $ans');
+      return Colors.purple;
     }
   }
 
