@@ -73,24 +73,53 @@ class GameController{
 
   List<PinColor> generateNewCode() {
     List<PinColor> combination = [];
-    for (int i = 0; i < 4; i++) {
-      int rand = Random().nextInt(6);
+    List<int> internalCombination = [];
+    bool isValidCode = false;
 
-      //note: there's probably a better way to do this but it's literally my first time writing dart
-      if (rand == 0) {
-        combination.insert(i, PinColor.red);
-      } else if (rand == 1) {
-        combination.insert(i, PinColor.yellow);
-      } else if (rand == 2) {
-        combination.insert(i, PinColor.green);
-      } else if (rand == 3) {
-        combination.insert(i, PinColor.blue);
-      } else if (rand == 4) {
-        combination.insert(i, PinColor.purple);
-      } else {
-        combination.insert(i, PinColor.orange);
+    while(!isValidCode){
+      int rand = Random().nextInt(5);
+
+      bool duplicateCheckFailed = false;
+      if(internalCombination.isNotEmpty){
+        for(int i = 0; i < internalCombination.length; i++){
+          if(internalCombination[i] == rand){
+            duplicateCheckFailed = true;
+            print('duplicate check failed, internal combination: $internalCombination, rand: $rand');
+          }
+        }
+        print(internalCombination);
+      }
+
+      if(!duplicateCheckFailed){
+        internalCombination.add(rand);
+      }
+
+      if(internalCombination.length >= 4){
+        isValidCode = true;
       }
     }
+    print(internalCombination);
+
+    //convert internal combination to codepins
+    for(int i = 0; i < 4; i++){
+      if(internalCombination[i] == 0){
+        combination.add(PinColor.red);
+      }else if(internalCombination[i] == 1){
+        combination.add(PinColor.yellow);
+      }else if(internalCombination[i] == 2){
+        combination.add(PinColor.green);
+      }else if(internalCombination[i] == 3){
+        combination.add(PinColor.blue);
+      }else if(internalCombination[i] == 4){
+        combination.add(PinColor.purple);
+      }else if(internalCombination[i] == 5){
+        combination.add(PinColor.orange);
+      }else{
+        combination.add(PinColor.red);
+        print('ERROR: invalid internalcombination value, setting color to red');
+      }
+    }
+
     return combination;
   }
 
