@@ -4,7 +4,6 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:mastermind_leaf/classes/gamecontroller.dart';
 import 'package:mastermind_leaf/screens/game-screen.dart';
 import 'package:mastermind_leaf/screens/info-screen.dart';
-import 'package:mastermind_leaf/screens/score-screen.dart';
 import 'package:mastermind_leaf/screens/start-screen.dart';
 import 'package:mastermind_leaf/screens/settings-screen.dart';
 

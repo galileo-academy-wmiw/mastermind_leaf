@@ -1,7 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:mastermind_leaf/classes/gamecontroller.dart';
-import 'package:mastermind_leaf/main.dart';
+import 'package:mastermind_leaf/library/global-variables.dart';
 
 class ScorePin extends StatelessWidget {
   ScorePin(this.currentColor, this.colorBlindMode);

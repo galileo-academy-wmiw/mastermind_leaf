@@ -1,66 +1,43 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:mastermind_leaf/library/global-variables.dart';
 
-enum PinColor {empty, red, yellow, green, blue, purple, orange}
+class GameController {
+  List<PinColor> combination = [
+    PinColor.empty,
+    PinColor.empty,
+    PinColor.empty,
+    PinColor.empty
+  ];
 
-enum Answer {
-
-
-  empty,
-  wrong,
-  rightColor,
-  rightSpot,
-}
-
-//color lists used everywhere
-List<Color> flutterCodePinColors = [
-  Colors.black,
-  Colors.red,
-  Colors.yellow,
-  Colors.green,
-  Colors.blue,
-  Colors.purple,
-  Colors.orange
-];
-
-List<Color> flutterScorePinColors = [
-  Colors.black,//empty
-  Colors.red,//wrong
-  Colors.yellow,//wrong spot
-  Colors.green,//all good
-];
-
-class GameController{
-  List<PinColor> combination = [PinColor.empty, PinColor.empty, PinColor.empty, PinColor.empty];
-
-  PinColor flutterColorToPinColor(Color flutterColor){
-    if(flutterColor == flutterCodePinColors[1]){
+  PinColor flutterColorToPinColor(Color flutterColor) {
+    if (flutterColor == flutterCodePinColors[1]) {
       return PinColor.red;
-    }else if(flutterColor == flutterCodePinColors[2]){
+    } else if (flutterColor == flutterCodePinColors[2]) {
       return PinColor.yellow;
-    }else if(flutterColor == flutterCodePinColors[3]){
+    } else if (flutterColor == flutterCodePinColors[3]) {
       return PinColor.green;
-    }else if(flutterColor == flutterCodePinColors[4]){
+    } else if (flutterColor == flutterCodePinColors[4]) {
       return PinColor.blue;
-    }else if(flutterColor == flutterCodePinColors[5]){
+    } else if (flutterColor == flutterCodePinColors[5]) {
       return PinColor.purple;
-    }else if(flutterColor == flutterCodePinColors[6]){
+    } else if (flutterColor == flutterCodePinColors[6]) {
       return PinColor.orange;
-    }else{
+    } else {
       return PinColor.empty;
     }
   }
 
-  Color answerToFlutterColor(Answer ans){
-    if(ans == Answer.empty){
+  Color answerToFlutterColor(Answer ans) {
+    if (ans == Answer.empty) {
       return flutterCodePinColors[0];
-    }else if(ans == Answer.wrong){
+    } else if (ans == Answer.wrong) {
       return flutterCodePinColors[1];
-    }else if(ans == Answer.rightColor){
+    } else if (ans == Answer.rightColor) {
       return flutterCodePinColors[2];
-    }else if(ans == Answer.rightSpot){
+    } else if (ans == Answer.rightSpot) {
       return flutterCodePinColors[3];
-    }else{
+    } else {
       //THIS SHOULD NEVER EVER HAPPEN, it's an emergency return path
       print('something went wrong in answerToFlutterColor, ans is $ans');
       return Colors.purple;
@@ -76,45 +53,46 @@ class GameController{
     List<int> internalCombination = [];
     bool isValidCode = false;
 
-    while(!isValidCode){
+    while (!isValidCode) {
       int rand = Random().nextInt(5);
 
       bool duplicateCheckFailed = false;
-      if(internalCombination.isNotEmpty){
-        for(int i = 0; i < internalCombination.length; i++){
-          if(internalCombination[i] == rand){
+      if (internalCombination.isNotEmpty) {
+        for (int i = 0; i < internalCombination.length; i++) {
+          if (internalCombination[i] == rand) {
             duplicateCheckFailed = true;
-            print('duplicate check failed, internal combination: $internalCombination, rand: $rand');
+            print(
+                'duplicate check failed, internal combination: $internalCombination, rand: $rand');
           }
         }
         print(internalCombination);
       }
 
-      if(!duplicateCheckFailed){
+      if (!duplicateCheckFailed) {
         internalCombination.add(rand);
       }
 
-      if(internalCombination.length >= 4){
+      if (internalCombination.length >= 4) {
         isValidCode = true;
       }
     }
     print(internalCombination);
 
     //convert internal combination to codepins
-    for(int i = 0; i < 4; i++){
-      if(internalCombination[i] == 0){
+    for (int i = 0; i < 4; i++) {
+      if (internalCombination[i] == 0) {
         combination.add(PinColor.red);
-      }else if(internalCombination[i] == 1){
+      } else if (internalCombination[i] == 1) {
         combination.add(PinColor.yellow);
-      }else if(internalCombination[i] == 2){
+      } else if (internalCombination[i] == 2) {
         combination.add(PinColor.green);
-      }else if(internalCombination[i] == 3){
+      } else if (internalCombination[i] == 3) {
         combination.add(PinColor.blue);
-      }else if(internalCombination[i] == 4){
+      } else if (internalCombination[i] == 4) {
         combination.add(PinColor.purple);
-      }else if(internalCombination[i] == 5){
+      } else if (internalCombination[i] == 5) {
         combination.add(PinColor.orange);
-      }else{
+      } else {
         combination.add(PinColor.red);
         print('ERROR: invalid internalcombination value, setting color to red');
       }

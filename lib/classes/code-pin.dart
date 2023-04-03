@@ -1,8 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:mastermind_leaf/classes/gamecontroller.dart';
-import 'package:mastermind_leaf/main.dart';
+import 'package:mastermind_leaf/library/global-variables.dart';
 
 class CodePin extends StatefulWidget {
   CodePin(this.pinActive, {super.key});

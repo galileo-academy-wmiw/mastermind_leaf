@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-
+import 'package:mastermind_leaf/library/global-variables.dart';
 import '../classes/score-pin.dart';
 import '../classes/code-pin.dart';
 import 'package:mastermind_leaf/classes/gamecontroller.dart';

@@ -2,7 +2,7 @@
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:mastermind_leaf/main.dart';
-import 'package:mastermind_leaf/styles/styles.dart';
+import 'package:mastermind_leaf/library/styles.dart';
 
 
 class StartScreen extends StatelessWidget {

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mastermind_leaf/styles/styles.dart';
+import 'package:mastermind_leaf/library/styles.dart';
 
 class SettingsScreen extends StatefulWidget {
   SettingsScreen({Key? key}) : super(key: key);

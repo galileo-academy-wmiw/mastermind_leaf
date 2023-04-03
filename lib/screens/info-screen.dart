@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:mastermind_leaf/styles/styles.dart';
+import 'package:mastermind_leaf/library/styles.dart';
 
 class InfoScreen extends StatelessWidget {
   const InfoScreen({Key? key}) : super(key: key);

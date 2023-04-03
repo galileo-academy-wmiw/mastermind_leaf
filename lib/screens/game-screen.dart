@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../classes/score-pin.dart';
-import '../classes/code-pin.dart';
 import 'package:mastermind_leaf/classes/game-row.dart';
 import 'package:mastermind_leaf/screens/score-screen.dart';
 
