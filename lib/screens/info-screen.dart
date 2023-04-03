@@ -45,7 +45,7 @@ class InfoScreen extends StatelessWidget {
                           Icon(Icons.egg, color: Colors.amber,),
                           Flexible(
                             child: Text(
-                              "a black spot means ye guessed the right color, and it be in the right position",
+                              "a green spot means ye guessed the right color, and it be in the right position",
                               style: paragraphStyle,
                             ),
                           ),
@@ -56,7 +56,7 @@ class InfoScreen extends StatelessWidget {
                           Icon(Icons.egg, color: Colors.amber,),
                           Flexible(
                             child: Text(
-                                "a white spot means ye guessed the right color, but be in the wrong place",
+                                "a yellow spot means ye guessed the right color, but be in the wrong place",
                                 style: paragraphStyle),
                           ),
                         ],
@@ -66,7 +66,7 @@ class InfoScreen extends StatelessWidget {
                           Icon(Icons.egg, color: Colors.amber,),
                           Flexible(
                             child: Text(
-                              "and finally, an empty spot means ye are just wrong",
+                              "and finally, a red spot means ye are just wrong",
                               style: paragraphStyle,
                             ),
                           ),

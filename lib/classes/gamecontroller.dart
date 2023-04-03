@@ -10,39 +10,6 @@ class GameController {
     PinColor.empty
   ];
 
-  PinColor flutterColorToPinColor(Color flutterColor) {
-    if (flutterColor == flutterCodePinColors[1]) {
-      return PinColor.red;
-    } else if (flutterColor == flutterCodePinColors[2]) {
-      return PinColor.yellow;
-    } else if (flutterColor == flutterCodePinColors[3]) {
-      return PinColor.green;
-    } else if (flutterColor == flutterCodePinColors[4]) {
-      return PinColor.blue;
-    } else if (flutterColor == flutterCodePinColors[5]) {
-      return PinColor.purple;
-    } else if (flutterColor == flutterCodePinColors[6]) {
-      return PinColor.orange;
-    } else {
-      return PinColor.empty;
-    }
-  }
-
-  Color answerToFlutterColor(Answer ans) {
-    if (ans == Answer.empty) {
-      return flutterCodePinColors[0];
-    } else if (ans == Answer.wrong) {
-      return flutterCodePinColors[1];
-    } else if (ans == Answer.rightColor) {
-      return flutterCodePinColors[2];
-    } else if (ans == Answer.rightSpot) {
-      return flutterCodePinColors[3];
-    } else {
-      //THIS SHOULD NEVER EVER HAPPEN, it's an emergency return path
-      print('something went wrong in answerToFlutterColor, ans is $ans');
-      return Colors.purple;
-    }
-  }
 
   void startNewGame(int turns) {
     combination = generateNewCode();

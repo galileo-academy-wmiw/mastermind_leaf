@@ -4,9 +4,9 @@ import 'package:flutter/material.dart';
 import 'package:mastermind_leaf/library/global-variables.dart';
 
 class CodePin extends StatefulWidget {
-  CodePin(this.pinActive, {super.key});
+  CodePin(this.pinActive, this.currentColor, {super.key});
 
-  Color currentColor = Colors.black;
+  Color currentColor;
   bool pinActive;
 
   VoidCallback setStateCallOnStateToDisableColorSwitching = () {};//i need to call setState() once from the gamerow once to fix a bug
@@ -32,11 +32,15 @@ class _CodePinState extends State<CodePin> {
     });
   }
 
+  @override
+  void initState() {
+    currentColor = widget.currentColor;
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     widget.setStateCallOnStateToDisableColorSwitching = callSetState; //makes the empty setstate available outside of CodePinState
-
 
     return AbsorbPointer(
       absorbing: !widget.pinActive,

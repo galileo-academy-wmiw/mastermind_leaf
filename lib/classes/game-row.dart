@@ -2,6 +2,7 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:mastermind_leaf/library/global-variables.dart';
+import 'package:mastermind_leaf/screens/score-screen.dart';
 import '../classes/score-pin.dart';
 import '../classes/code-pin.dart';
 import 'package:mastermind_leaf/classes/gamecontroller.dart';
@@ -31,10 +32,10 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
   @override
   void initState() {
     pins = [
-      CodePin(widget.rowActive),
-      CodePin(widget.rowActive),
-      CodePin(widget.rowActive),
-      CodePin(widget.rowActive)
+      CodePin(widget.rowActive, flutterCodePinColors[0]),
+      CodePin(widget.rowActive, flutterCodePinColors[0]),
+      CodePin(widget.rowActive, flutterCodePinColors[0]),
+      CodePin(widget.rowActive, flutterCodePinColors[0])
     ];
     
     scorePins = [
@@ -76,11 +77,11 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
   void buttonPress() {
     if (widget.inputPins.isEmpty) {
       for (int i = 0; i < 4; i++) {
-        widget.inputPins.add(gameController.flutterColorToPinColor(pins[i].currentColor));
+        widget.inputPins.add(flutterColorToPinColor(pins[i].currentColor));
       }
     }else{
       for(int i = 0; i < 4; i++){
-        widget.inputPins[i] = gameController.flutterColorToPinColor(pins[i].currentColor);
+        widget.inputPins[i] = flutterColorToPinColor(pins[i].currentColor);
       }
     }
 
@@ -106,17 +107,31 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
       //make scorePins the right Color
       List<PinColor> inputs = [];
       for(int i = 0; i < 4; i++){
-        inputs.add(gameController.flutterColorToPinColor(pins[i].currentColor));
+        inputs.add(flutterColorToPinColor(pins[i].currentColor));
       }
       List<Answer> results = gameController.compareAnswer(inputs);
 
       for(int i = 3; i >= 0; i--){
-        scorePins[i] = ScorePin(gameController.answerToFlutterColor(results[i]), true);
+        scorePins[i] = ScorePin(answerToFlutterColor(results[i]), true);
       }
 
-      widget.rowActive = false;
-      widget.addGameRowFunction();
-      setState(() {});
+      bool correctCombination = true;
+
+      for(int i = 0; i <4; i++){
+        if(results[i] != Answer.rightSpot){
+          correctCombination = false;
+        }
+      }
+
+
+      //if you have the correct answer
+      if(correctCombination){
+        Navigator.push(context, MaterialPageRoute(builder: (context) => ScoreScreen(true, gameScreen.rowCount, inputs)));
+      }else{
+        widget.rowActive = false;
+        widget.addGameRowFunction();
+        setState(() {});
+      }
     }
   }
 

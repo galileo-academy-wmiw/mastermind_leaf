@@ -5,6 +5,7 @@ import 'package:mastermind_leaf/screens/score-screen.dart';
 
 class GameScreen extends StatefulWidget {
   GameScreen({Key? key}) : super(key: key);
+  int rowCount = 0;
 
   @override
   State<GameScreen> createState() => _GameScreenState();
@@ -22,7 +23,7 @@ class _GameScreenState extends State<GameScreen> {
       }
       gameRows.add(GameRow(true, addRow));
     });
-
+    widget.rowCount = gameRows.length;
   }
 
   @override
@@ -37,11 +38,6 @@ class _GameScreenState extends State<GameScreen> {
       children: [
         Column(
           children: gameRows
-        ),
-        ElevatedButton(
-            onPressed: () {Navigator.push(context, MaterialPageRoute(builder: (context) => ScoreScreen()));
-            },
-            child: Text('to score screen')
         ),
       ],
     );
