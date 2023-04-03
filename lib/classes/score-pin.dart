@@ -1,16 +1,16 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
-
-
-
-enum Answer {
-  rightSpot,
-  rightColor,
-  wrong,
-  empty;
-}
+import 'package:mastermind_leaf/classes/gamecontroller.dart';
+import 'package:mastermind_leaf/main.dart';
 
 class ScorePin extends StatelessWidget {
-  const ScorePin({Key? key}) : super(key: key);
+  ScorePin({Key? key}) : super(key: key);
+
+  Color currentColor = Colors.blue;
+  bool colorBlindMode = true;
+
+  List<Color> pinColors = flutterScorePinColors;
+
 
   @override
   Widget build(BuildContext context) {
@@ -21,17 +21,54 @@ class ScorePin extends StatelessWidget {
         minHeight: 15,
         minWidth: 15,
       ),
-      child: Container(
-        decoration: BoxDecoration(
-          color: Colors.blue,
-          shape: BoxShape.circle,
-          border: Border.all(
-            width: 5,
-            color: Colors.black,
-            style: BorderStyle.solid,
-          ),
-        ),
+      child: CustomPaint(
+        painter: ScorePinPainter(currentColor, colorBlindMode, pinColors),
+        size: MediaQuery.of(context).size,
+
       ),
     );
   }
+}
+
+class ScorePinPainter extends CustomPainter{
+
+  Color currentColor;
+  bool colorBlindMode;
+  List<Color> pinColors;
+
+  ScorePinPainter(this.currentColor, this.colorBlindMode,this.pinColors);
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    var center = Offset(size.width/2, size.height/2);
+
+    final paint = Paint();
+
+    //draw outer circle
+    paint.color = Colors.black;
+    canvas.drawCircle(center, size.width/2, paint);
+
+    //draw inner circle
+    paint.color = currentColor;
+    canvas.drawCircle(center, (size.width/2)* 0.75, paint);
+
+    //draw colorblind arcs
+    if(colorBlindMode){
+      paint.color = Colors.black;
+      Rect rectangle = Rect.fromLTWH(0, 0, size.width, size.height);
+      if(currentColor == pinColors[1]){
+        canvas.drawArc(rectangle, 0, (pi/3)* 2, true, paint);
+      }else if(currentColor == pinColors[2]){
+        canvas.drawArc(rectangle, (pi/3)*2, (pi/3)*4, true, paint);
+      }else if(currentColor == pinColors[3]){
+        canvas.drawArc(rectangle, (pi/3)*4, pi*2, true, paint);
+      }
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) {
+    return true;
+  }
+
 }

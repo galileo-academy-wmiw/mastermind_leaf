@@ -67,11 +67,11 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
   void buttonPress() {
     if (widget.inputPins.isEmpty) {
       for (int i = 0; i < 4; i++) {
-        widget.inputPins.add(flutterColorToPinColor(pins[i].currentColor));
+        widget.inputPins.add(gameController.flutterColorToPinColor(pins[i].currentColor));
       }
     }else{
       for(int i = 0; i < 4; i++){
-        widget.inputPins[i] = flutterColorToPinColor(pins[i].currentColor);
+        widget.inputPins[i] = gameController.flutterColorToPinColor(pins[i].currentColor);
       }
     }
 
@@ -88,6 +88,7 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
 
 
     if (!areThereEmptyPins) {
+
 
       for (int i = 0; i < 4; i++) {
         pins[i].pinActive = false;

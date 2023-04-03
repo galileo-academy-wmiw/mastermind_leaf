@@ -1,6 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:mastermind_leaf/classes/gamecontroller.dart';
+import 'package:mastermind_leaf/main.dart';
 
 class CodePin extends StatefulWidget {
   CodePin(this.pinActive, {super.key});
@@ -17,15 +19,7 @@ class CodePin extends StatefulWidget {
 
 class _CodePinState extends State<CodePin> {
 
-  List<Color> pinColors = [
-    Colors.black,
-    Colors.red,
-    Colors.yellow,
-    Colors.green,
-    Colors.blue,
-    Colors.purple,
-    Colors.orange
-  ];
+  List<Color> pinColors = flutterCodePinColors;
 
   bool colorBlindMode = true;
 
@@ -78,7 +72,7 @@ class _CodePinState extends State<CodePin> {
               minWidth: 30,
             ),
             child: CustomPaint(
-                painter: CodePinPainter(currentColor, colorBlindMode),
+                painter: CodePinPainter(currentColor, colorBlindMode, pinColors),
                 size: MediaQuery.of(context).size,
             ),
         ),
@@ -90,8 +84,9 @@ class _CodePinState extends State<CodePin> {
 class CodePinPainter extends CustomPainter {
   Color currentColor;
   bool colorBlindMode;
+  List<Color> pinColors;
   
-  CodePinPainter(this.currentColor, this.colorBlindMode);
+  CodePinPainter(this.currentColor, this.colorBlindMode, this.pinColors);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -105,22 +100,22 @@ class CodePinPainter extends CustomPainter {
 
     //draw inner circle
     paint.color = currentColor;
-    canvas.drawCircle(center, (size.width/2)* 0.75, paint);
+    canvas.drawCircle(center, (size.width/2)* 0.80, paint);
 
     if(colorBlindMode){
       paint.color = Colors.black;
       Rect rectangle = Rect.fromLTWH(0, 0, size.width, size.height);
-      if(currentColor == Colors.red){
+      if(currentColor == pinColors[1]){
         canvas.drawArc(rectangle, 0, pi/3, true, paint);
-      }else if(currentColor == Colors.yellow){
+      }else if(currentColor == pinColors[2]){
         canvas.drawArc(rectangle, pi/3, pi/3, true, paint);
-      }else if(currentColor == Colors.green){
+      }else if(currentColor == pinColors[3]){
         canvas.drawArc(rectangle, (pi/3)*2, pi/3, true, paint);
-      }else if(currentColor == Colors.blue){
+      }else if(currentColor == pinColors[4]){
         canvas.drawArc(rectangle, pi, pi/3, true, paint);
-      }else if(currentColor == Colors.purple){
+      }else if(currentColor == pinColors[5]){
         canvas.drawArc(rectangle, (pi/3)*4, pi/3, true, paint);
-      }else if(currentColor == Colors.orange){
+      }else if(currentColor == pinColors[6]){
         canvas.drawArc(rectangle, (pi/3)*5, pi/3, true, paint);
       }
     }

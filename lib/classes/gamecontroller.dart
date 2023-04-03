@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:flutter/material.dart';
 
 enum PinColor {empty, red, yellow, green, blue, purple, orange}
 
@@ -9,9 +10,51 @@ enum Answer {
   empty;
 }
 
+//color lists used everywhere
+List<Color> flutterCodePinColors = [
+  Colors.black,
+  Colors.red,
+  Colors.yellow,
+  Colors.green,
+  Colors.blue,
+  Colors.purple,
+  Colors.orange
+];
+
+List<Color> flutterScorePinColors = [
+  Colors.black,//empty
+  Colors.red,//wrong
+  Colors.yellow,//wrong spot
+  Colors.green,//all good
+];
+
+
 class GameController{
 
+
+
   List<PinColor> combination = [PinColor.empty, PinColor.empty, PinColor.empty, PinColor.empty];
+
+
+
+
+  PinColor flutterColorToPinColor(Color flutterColor){
+    if(flutterColor == flutterCodePinColors[1]){
+      return PinColor.red;
+    }else if(flutterColor == flutterCodePinColors[2]){
+      return PinColor.yellow;
+    }else if(flutterColor == flutterCodePinColors[3]){
+      return PinColor.green;
+    }else if(flutterColor == flutterCodePinColors[4]){
+      return PinColor.blue;
+    }else if(flutterColor == flutterCodePinColors[5]){
+      return PinColor.purple;
+    }else if(flutterColor == flutterCodePinColors[6]){
+      return PinColor.orange;
+    }else{
+      return PinColor.empty;
+    }
+  }
 
   void startNewGame(int turns) {
     combination = generateNewCode();
