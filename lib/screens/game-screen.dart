@@ -12,7 +12,7 @@ class GameScreen extends StatefulWidget {
 
 }
 
-class _GameScreenState extends State<GameScreen> {
+class _GameScreenState extends State<GameScreen> with AutomaticKeepAliveClientMixin {
   List<GameRow> gameRows = [];
 
   void addRow(){
@@ -42,4 +42,7 @@ class _GameScreenState extends State<GameScreen> {
       ],
     );
   }
+
+  @override
+  bool get wantKeepAlive => true;
 }

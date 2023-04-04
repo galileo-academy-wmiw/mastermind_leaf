@@ -64,6 +64,13 @@ flutter:
     - assets/audio/bleep.wav
     - assets/images/seagull.jpg
     - assets/images/rubber-duck.jpeg
+    - assets/images/sprites/RedGem.png
+    - assets/images/sprites/YellowGem.png
+    - assets/images/sprites/GreenGem.png
+    - assets/images/sprites/BlueGem.png
+    - assets/images/sprites/PurpleGem.png
+    - assets/images/sprites/OrangeGem.png
+    - assets/images/sprites/Skull.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

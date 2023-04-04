@@ -39,10 +39,11 @@ class ScoreScreen extends StatelessWidget {
                   style: paragraphStyle,
                 ),
                 ElevatedButton(
+                  style: startButtonStyle,
                     onPressed: () {
                       gameController
                           .startNewGame(12); //turns is currently hard coded
-                      gameScreen = new GameScreen();
+                      gameScreen = GameScreen();
                       Navigator.pushReplacement(context,
                           MaterialPageRoute(builder: (context) => AppTree()));
                     },

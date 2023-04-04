@@ -3,6 +3,7 @@ import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:mastermind_leaf/main.dart';
 import 'package:mastermind_leaf/library/styles.dart';
+import 'package:mastermind_leaf/screens/game-screen.dart';
 
 
 class StartScreen extends StatelessWidget {
@@ -34,6 +35,8 @@ class StartScreen extends StatelessWidget {
                 ),
                 onPressed: () {
                   audioPlayer.play(AssetSource('audio/bleep.wav'));
+                  gameController.startNewGame(12);//turns hardcoded for now
+                  gameScreen = GameScreen();
                   Navigator.push(context, MaterialPageRoute(builder: (context) => AppTree())
                   );
                 },

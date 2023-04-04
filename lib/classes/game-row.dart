@@ -75,6 +75,8 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
 
 
   void buttonPress() {
+
+    //build up input array
     if (widget.inputPins.isEmpty) {
       for (int i = 0; i < 4; i++) {
         widget.inputPins.add(flutterColorToPinColor(pins[i].currentColor));
@@ -85,6 +87,7 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
       }
     }
 
+    //check for empty pins
     bool areThereEmptyPins = false;
 
     for (int i = 0; i < 4; i++) {
@@ -111,10 +114,13 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
       }
       List<Answer> results = gameController.compareAnswer(inputs);
 
-      for(int i = 3; i >= 0; i--){
+      //set up score pins
+      for(int i = 0; i < 4; i++){
         scorePins[i] = ScorePin(answerToFlutterColor(results[i]), true);
       }
 
+
+      //test if the answers are correct
       bool correctCombination = true;
 
       for(int i = 0; i <4; i++){
@@ -123,11 +129,12 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
         }
       }
 
-
-      //if you have the correct answer
+      //if player guessed it
       if(correctCombination){
         Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ScoreScreen(true, gameScreen.rowCount, inputs)));
-      }else{
+      }else if(gameScreen.rowCount > gameController.turns){//if player is out of turns
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ScoreScreen(false, 420, gameController.combination)));//second variable isn't used in this case so i set it as 420 because memes
+      }else{//if there's still turns left and player guessed wrong
         widget.rowActive = false;
         widget.addGameRowFunction();
         setState(() {});

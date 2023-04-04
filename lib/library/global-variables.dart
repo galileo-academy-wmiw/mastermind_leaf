@@ -26,6 +26,15 @@ List<Color> flutterScorePinColors = [
   Colors.yellow, //wrong spot
   Colors.green, //all good
 ];
+List<AssetImage> sprites = [
+  const AssetImage('assets/images/sprites/Skull.png'),
+  const AssetImage('assets/images/sprites/RedGem.png'),
+  const AssetImage('assets/images/sprites/YellowGem.png'),
+  const AssetImage('assets/images/sprites/GreenGem.png'),
+  const AssetImage('assets/images/sprites/BlueGem.png'),
+  const AssetImage('assets/images/sprites/PurpleGem.png'),
+  const AssetImage('assets/images/sprites/OrangeGem.png')
+];
 
 PinColor flutterColorToPinColor(Color flutterColor) {
   if (flutterColor == flutterCodePinColors[1]) {

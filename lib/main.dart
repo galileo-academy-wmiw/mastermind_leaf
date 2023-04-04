@@ -11,8 +11,6 @@ GameController gameController = GameController();
 GameScreen gameScreen = GameScreen();
 AudioPlayer audioPlayer = AudioPlayer();
 
-
-
 void main() {
   gameController.startNewGame(12);
   runApp(const AppRoot());

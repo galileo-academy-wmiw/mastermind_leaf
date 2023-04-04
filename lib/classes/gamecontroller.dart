@@ -10,8 +10,10 @@ class GameController {
     PinColor.empty
   ];
 
+  int turns = 0;
 
   void startNewGame(int turns) {
+    this.turns = turns;
     combination = generateNewCode();
   }
 
