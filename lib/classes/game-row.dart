@@ -126,7 +126,7 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
 
       //if you have the correct answer
       if(correctCombination){
-        Navigator.push(context, MaterialPageRoute(builder: (context) => ScoreScreen(true, gameScreen.rowCount, inputs)));
+        Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => ScoreScreen(true, gameScreen.rowCount, inputs)));
       }else{
         widget.rowActive = false;
         widget.addGameRowFunction();
