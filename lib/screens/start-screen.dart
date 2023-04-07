@@ -34,7 +34,7 @@ class StartScreen extends StatelessWidget {
                   ],
                 ),
                 onPressed: () {
-                  audioPlayer.play(AssetSource('audio/bleep.wav'));
+                  audioPlayer.play(AssetSource('audio/introBleep.wav'));
                   gameController.startNewGame(12);//turns hardcoded for now
                   gameScreen = GameScreen();
                   Navigator.push(context, MaterialPageRoute(builder: (context) => AppTree())
