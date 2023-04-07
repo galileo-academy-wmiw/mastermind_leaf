@@ -1,6 +1,9 @@
 import 'dart:math';
+import 'dart:async';
 
+import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
+import 'package:mastermind_leaf/classes/ShakeAnimationSineCurve.dart';
 import 'package:mastermind_leaf/library/global-variables.dart';
 import 'package:mastermind_leaf/screens/score-screen.dart';
 import '../classes/score-pin.dart';
@@ -73,7 +76,6 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
   }
 
 
-
   void buttonPress() {
 
     //build up input array
@@ -101,6 +103,8 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
 
 
     if (!areThereEmptyPins) {
+      audioPlayer.play(AssetSource('audio/bleep.wav'));
+      
       //make codepins non interactive
       for (int i = 0; i < 4; i++) {
         pins[i].pinActive = false;
@@ -139,6 +143,8 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
         widget.addGameRowFunction();
         setState(() {});
       }
+    }else{
+      audioPlayer.play(AssetSource('audio/badBleep.wav'));
     }
   }
 
