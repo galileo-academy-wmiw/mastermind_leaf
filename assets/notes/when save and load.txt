@@ -1,0 +1,6 @@
+save:
+on setting change. also reload game on setting change
+
+load:
+on new game.
+on opening settings screen to display current settings
