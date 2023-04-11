@@ -3,7 +3,6 @@ import 'dart:async';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:mastermind_leaf/classes/ShakeAnimationSineCurve.dart';
 import 'package:mastermind_leaf/library/global-variables.dart';
 import 'package:mastermind_leaf/screens/score-screen.dart';
 import '../classes/score-pin.dart';
@@ -59,12 +58,13 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
       flyInAnimation =
           Tween<double>(begin: -10, end: 0).animate(flyInAnimationController);
     }
-
+    
     flyInAnimationController.forward();
 
     flyInAnimation.addListener(() {
       setState(() {});
     });
+    
 
     super.initState();
   }
@@ -150,6 +150,7 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
       transform: Matrix4.translationValues(flyInAnimation.value * 100, 0, 0),
       child: Row(
