@@ -72,6 +72,18 @@ Color pinColorToFlutterColor(PinColor pinColor){
   }
 }
 
+Answer flutterColorToAnswer(Color flutterColor){
+  if(flutterColor == flutterScorePinColors[1]){
+    return Answer.wrong;
+  }else if(flutterColor == flutterScorePinColors[2]){
+    return Answer.rightColor;
+  }else if(flutterColor == flutterScorePinColors[3]){
+    return Answer.rightSpot;
+  }else{
+   return Answer.empty;
+  }
+}
+
 Color answerToFlutterColor(Answer ans) {
   if (ans == Answer.empty) {
     return flutterCodePinColors[0];
