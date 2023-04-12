@@ -58,34 +58,31 @@ class _CodePinState extends State<CodePin> {
     widget.setStateCallOnStateToDisableColorSwitching =
         callSetState; //makes the empty setstate available outside of CodePinState
     if(pirateMode){
-      return AbsorbPointer(
-        absorbing: !widget.pinActive,
-        child: ( GestureDetector(
-          onTap: (){
-            setState(() {
-              index++;
+      return Expanded(
+        child: AbsorbPointer(
+          absorbing: !widget.pinActive,
+          child: ( GestureDetector(
+            onTap: (){
+              setState(() {
+                index++;
 
-              if (index > 6) {
-                index = 1;
-              }
-              currentColor = pinColors[index];
-              currentSprite = sprites[index];
-              widget.currentColor = currentColor;
-            });
-          },
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(
-              maxHeight: 65,
-              maxWidth: 65,
-              minHeight: 30,
-              minWidth: 30,
+                if (index > 6) {
+                  index = 1;
+                }
+                currentColor = pinColors[index];
+                currentSprite = sprites[index];
+                widget.currentColor = currentColor;
+              });
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(3.0),
+              child: Image(
+                fit: BoxFit.fill,
+                image: currentSprite,
+              ),
             ),
-            child: Image(
-              fit: BoxFit.fill,
-              image: currentSprite,
-            ),
-          ),
-        ))
+          ))
+        ),
       );
     }else{
       return AbsorbPointer(
@@ -117,9 +114,7 @@ class _CodePinState extends State<CodePin> {
         },*/
           child: ConstrainedBox(
             constraints: const BoxConstraints(
-              maxHeight: 65,
               maxWidth: 65,
-              minHeight: 30,
               minWidth: 30,
             ),
             child: CustomPaint(

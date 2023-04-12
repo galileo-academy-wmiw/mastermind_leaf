@@ -75,6 +75,7 @@ flutter:
     - assets/images/sprites/PurpleGem.png
     - assets/images/sprites/OrangeGem.png
     - assets/images/sprites/Skull.png
+    - assets/images/sprites/placeholder.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

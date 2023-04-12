@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 import 'package:mastermind_leaf/classes/gamecontroller.dart';
-import 'package:mastermind_leaf/screens/game-screen.dart';
-import 'package:mastermind_leaf/screens/info-screen.dart';
-import 'package:mastermind_leaf/screens/start-screen.dart';
-import 'package:mastermind_leaf/screens/settings-screen.dart';
+import 'package:mastermind_leaf/screens/game_screen.dart';
+import 'package:mastermind_leaf/screens/info_screen.dart';
+import 'package:mastermind_leaf/screens/start_screen.dart';
+import 'package:mastermind_leaf/screens/settings_screen.dart';
 
 GameController gameController = GameController();
 GameScreen gameScreen = GameScreen();
@@ -27,7 +27,7 @@ class AppRoot extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: StartScreen()
+      home: const StartScreen()
     );
   }
 }
@@ -43,11 +43,11 @@ class AppTree extends StatelessWidget {
         body: Center(child: TabBarView(
           children: [
             gameScreen,
-            InfoScreen(),
+            const InfoScreen(),
             SettingsScreen()
           ],
         )),
-        bottomNavigationBar: TabBar(
+        bottomNavigationBar: const TabBar(
           labelColor: Colors.black,
           tabs: [
             Tab(icon:Icon(Icons.sports_esports, color: Colors.amber,)),

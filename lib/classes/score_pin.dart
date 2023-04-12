@@ -13,17 +13,14 @@ class ScorePin extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ConstrainedBox(
-      constraints: const BoxConstraints(
-        maxHeight: 35,
-        maxWidth: 35,
-        minHeight: 15,
-        minWidth: 15,
-      ),
-      child: CustomPaint(
-        painter: ScorePinPainter(currentColor, colorBlindMode, pinColors),
-        size: MediaQuery.of(context).size,
+    return Expanded(
+      child: Padding(
+        padding: const EdgeInsets.all(1.5),
+        child: CustomPaint(
+          painter: ScorePinPainter(currentColor, colorBlindMode, pinColors),
+          size: MediaQuery.of(context).size,
 
+        ),
       ),
     );
   }

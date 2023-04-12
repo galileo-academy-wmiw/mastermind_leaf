@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:mastermind_leaf/classes/game-row.dart';
-import 'package:mastermind_leaf/screens/score-screen.dart';
+import 'package:mastermind_leaf/classes/game_row.dart';
+import 'package:mastermind_leaf/screens/score_screen.dart';
 
 class GameScreen extends StatefulWidget {
   GameScreen({Key? key}) : super(key: key);

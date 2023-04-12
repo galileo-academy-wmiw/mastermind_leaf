@@ -1,21 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:mastermind_leaf/library/settings.dart';
 import 'package:mastermind_leaf/library/styles.dart';
 
 class SettingsScreen extends StatefulWidget {
   SettingsScreen({Key? key}) : super(key: key);
+
 
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  bool soundEnabled = true;
-
-  bool visualAids = false;
-
-  int turns = 12;
-
-  double turnsDouble = 12;
+  double turnsDouble = settingTurns.toDouble();//this value is just for the slider to slide around right, turns don't accept
 
   @override
   Widget build(BuildContext context) {
@@ -25,45 +21,30 @@ class _SettingsScreenState extends State<SettingsScreen> {
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: const [
                 Text('Settings', style: titleStyle,)
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(
+                const Text(
                   'Sound:',
                   style: paragraphStyle,
                 ),
                 Switch(
-                    value: soundEnabled,
+                    value: settingSoundEnabled,
                     onChanged: (value) {
                       setState(() {
-                        soundEnabled = value;
+                        settingSoundEnabled = value;
+                        saveSettingsBool('settingSoundEnabled', value);
                       });
                     }),
               ],
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  'Colorblind Mode:',
-                  style: paragraphStyle,
-                ),
-                Switch(
-                    value: visualAids,
-                    onChanged: (value) {
-                      setState(() {
-                        visualAids = value;
-                      });
-                    })
-              ],
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
+              children: const [
                 Text(
                   'How many turns',
                   style: paragraphStyle,
@@ -73,22 +54,25 @@ class _SettingsScreenState extends State<SettingsScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text('10', style: paragraphStyle),
+                const Text('10', style: paragraphStyle),
                 Slider.adaptive(
                     min: 10,
                     max: 20,
                     value: turnsDouble,
                     onChanged: (double value) {
                       setState(() {
-                        turns = value.round();
+                        turnsDouble = value;
+                        settingTurns = value.round();
+                        saveSettingsInt('settingTurns', value.round());
                       });
                     }),
-                Text(
+                const Text(
                   '20',
                   style: paragraphStyle,
                 ),
               ],
-            )
+            ),
+            Center(child: Text(settingTurns.toString(), style: paragraphStyle))
           ],
         ),
       ),

@@ -1,13 +1,11 @@
 import 'dart:math';
-import 'dart:async';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
 import 'package:mastermind_leaf/library/global-variables.dart';
-import 'package:mastermind_leaf/screens/score-screen.dart';
-import '../classes/score-pin.dart';
-import '../classes/code-pin.dart';
-import 'package:mastermind_leaf/classes/gamecontroller.dart';
+import 'package:mastermind_leaf/screens/score_screen.dart';
+import '../classes/score_pin.dart';
+import '../classes/code_pin.dart';
 import 'package:mastermind_leaf/main.dart';
 
 
@@ -150,43 +148,62 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
 
   @override
   Widget build(BuildContext context) {
-
+    double rowWidth = MediaQuery.of(context).size.width;
     return Container(
       transform: Matrix4.translationValues(flyInAnimation.value * 100, 0, 0),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: pins,
-          ),
-          AbsorbPointer(
-            absorbing: !widget.rowActive,
-            child: TextButton(
-                onPressed: buttonPress,
-                child: Icon(
-                  Icons.forward,
-                  size: 50,
-                )),
-          ),
-          Container(
-            constraints: const BoxConstraints(
-              maxHeight: 80,
-              maxWidth: 80,
-              minHeight: 40,
-              minWidth: 40,
+          SizedBox(
+            width: (rowWidth/6)*4,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: pins,
+
             ),
+          ),
+          SizedBox(
+            width: rowWidth/6,
+            child: Row(
+              //this row is here just to stop flutter from throwing errors
+              children: [
+                Expanded(
+                  child: AbsorbPointer(
+                    absorbing: !widget.rowActive,
+                    child: GestureDetector(
+                      onTap: buttonPress,
+                      child: const Padding(
+                        padding: EdgeInsets.all(3.0),
+                        child: Image(
+                          fit: BoxFit.fill,
+                          image: AssetImage('assets/images/sprites/placeholder.png')
+                        ),
+                      ),
+                    )
+                  ),
+                ),
+              ],
+            ),
+          ),
+          SizedBox(
+            width: rowWidth/6,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [scorePins[0], scorePins[1]]),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [scorePins[2], scorePins[3]]),
+                Container(
+                  height: rowWidth/12,
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [scorePins[0], scorePins[1]]),
+                ),
+                Container(
+                  height: rowWidth/12,
+                  child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceAround,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [scorePins[2], scorePins[3]]),
+                ),
               ],
             ),
           )
