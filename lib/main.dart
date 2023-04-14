@@ -34,7 +34,7 @@ class AppRoot extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: const StartScreen()
+      home: StartScreen()
     );
   }
 }

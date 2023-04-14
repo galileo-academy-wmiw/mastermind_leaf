@@ -9,7 +9,9 @@ import 'package:mastermind_leaf/screens/game_screen.dart';
 
 
 class StartScreen extends StatelessWidget {
-  const StartScreen({Key? key}) : super(key: key);
+  StartScreen({Key? key}) : super(key: key);
+
+  Future<int> settingTurns = loadSettingsInt('settingTurns', 12);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +29,7 @@ class StartScreen extends StatelessWidget {
               image: AssetImage('assets/images/seagull.jpg'),
             ),
             FutureBuilder<int>(
-              future: loadSettingsInt('settingTurns', 12),
+              future: settingTurns,
               builder: (BuildContext context,AsyncSnapshot snapshot) {
                 return ElevatedButton(
                   style: startButtonStyle,

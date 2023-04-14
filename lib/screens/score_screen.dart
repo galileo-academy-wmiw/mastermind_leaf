@@ -11,6 +11,8 @@ class ScoreScreen extends StatelessWidget {
   bool gameFinished;
   List<PinColor> combination;
 
+  Future<int> settingTurns = loadSettingsInt('settingTurns', 12);
+
   ScoreScreen(this.gameFinished, this.turnsTaken, this.combination, {super.key});
 
   @override
@@ -39,7 +41,7 @@ class ScoreScreen extends StatelessWidget {
                 style: paragraphStyle,
               ),
               FutureBuilder<int>(
-                  future: loadSettingsInt('settingTurns', 12),
+                  future: settingTurns,
                   builder: (BuildContext context,AsyncSnapshot snapshot){
                   return ElevatedButton(
                     style: startButtonStyle,
@@ -87,7 +89,7 @@ class ScoreScreen extends StatelessWidget {
                 style: paragraphStyle,
               ),
               FutureBuilder<int>(
-                  future: loadSettingsInt('settingTurns', 12),
+                  future: settingTurns,
                   builder: (BuildContext context,AsyncSnapshot snapshot){
                     return ElevatedButton(
                         style: startButtonStyle,
