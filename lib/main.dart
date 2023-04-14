@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 import 'package:mastermind_leaf/classes/gamecontroller.dart';
+import 'package:mastermind_leaf/library/global-variables.dart';
+import 'package:mastermind_leaf/library/settingFunctions.dart';
 import 'package:mastermind_leaf/screens/game_screen.dart';
 import 'package:mastermind_leaf/screens/info_screen.dart';
 import 'package:mastermind_leaf/screens/start_screen.dart';
@@ -11,7 +13,12 @@ GameController gameController = GameController();
 GameScreen gameScreen = GameScreen();
 AudioPlayer audioPlayer = AudioPlayer();
 
+setSoundEnabled() async{
+  soundEnabled = await loadSettingsBool('settingSoundEnabled', true);
+}
+
 void main() {
+  setSoundEnabled();
   gameController.startNewGame(12);
   runApp(const AppRoot());
   audioPlayer.setSource(AssetSource('audio/bleep.wav'));

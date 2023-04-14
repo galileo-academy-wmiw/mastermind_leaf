@@ -1,5 +1,6 @@
 
 import 'package:audioplayers/audioplayers.dart';
+import 'package:mastermind_leaf/library/global-variables.dart';
 import 'package:mastermind_leaf/library/settingFunctions.dart';
 import 'package:flutter/material.dart';
 import 'package:mastermind_leaf/main.dart';
@@ -39,7 +40,9 @@ class StartScreen extends StatelessWidget {
                   onPressed: () {
                     int printText = snapshot.data;
                     print('starting new game with $printText turns');
-                    audioPlayer.play(AssetSource('audio/introBleep.wav'));
+                    if(soundEnabled){
+                      audioPlayer.play(AssetSource('audio/introBleep.wav'));
+                    }
                     gameController.startNewGame(snapshot.data);//turns hardcoded for now
                     gameScreen = GameScreen();
                     Navigator.push(context, MaterialPageRoute(builder: (context) => AppTree())

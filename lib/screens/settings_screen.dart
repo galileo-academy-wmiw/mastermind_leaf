@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mastermind_leaf/library/global-variables.dart';
 import 'package:mastermind_leaf/library/settingFunctions.dart';
 import 'package:mastermind_leaf/library/styles.dart';
 
@@ -53,6 +54,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           value: snapshot.data,
                           onChanged: (value) {
                             setState(() {
+                              soundEnabled = value;
                               saveSettingsBool('settingSoundEnabled', value);
                               settingSoundEnabled = loadSettingsBool('settingSoundEnabled', true);
                             });
@@ -62,6 +64,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           value: true,
                           onChanged: (value) {
                             setState(() {
+                              soundEnabled = value;
                               saveSettingsBool('settingSoundEnabled', value);
                               settingSoundEnabled = loadSettingsBool('settingSoundEnabled', true);
                             });

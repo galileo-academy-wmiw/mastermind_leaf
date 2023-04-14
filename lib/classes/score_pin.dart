@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:mastermind_leaf/library/global-variables.dart';
 
 class ScorePin extends StatelessWidget {
-  ScorePin(this.currentColor, this.colorBlindMode);
+  ScorePin(this.currentColor, this.colorBlindMode, {super.key});
 
   Color currentColor;
   bool colorBlindMode;

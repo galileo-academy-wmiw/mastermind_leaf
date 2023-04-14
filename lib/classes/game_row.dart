@@ -101,7 +101,9 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
 
 
     if (!areThereEmptyPins) {
-      audioPlayer.play(AssetSource('audio/bleep.wav'));
+      if(soundEnabled){
+        audioPlayer.play(AssetSource('audio/bleep.wav'));
+      }
       
       //make codepins non interactive
       for (int i = 0; i < 4; i++) {
@@ -141,7 +143,7 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
         widget.addGameRowFunction();
         setState(() {});
       }
-    }else{
+    }else if (soundEnabled){
       audioPlayer.play(AssetSource('audio/badBleep.wav'));
     }
   }
