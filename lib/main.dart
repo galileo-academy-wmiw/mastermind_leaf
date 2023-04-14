@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
 
 import 'package:mastermind_leaf/classes/gamecontroller.dart';
-import 'package:mastermind_leaf/library/global-variables.dart';
-import 'package:mastermind_leaf/library/settingFunctions.dart';
+import 'package:mastermind_leaf/library/global_variables.dart';
+import 'package:mastermind_leaf/library/setting_functions.dart';
 import 'package:mastermind_leaf/screens/game_screen.dart';
 import 'package:mastermind_leaf/screens/info_screen.dart';
 import 'package:mastermind_leaf/screens/start_screen.dart';
@@ -51,7 +51,7 @@ class AppTree extends StatelessWidget {
           children: [
             gameScreen,
             const InfoScreen(),
-            SettingsScreen()
+            const SettingsScreen()
           ],
         )),
         bottomNavigationBar: const TabBar(

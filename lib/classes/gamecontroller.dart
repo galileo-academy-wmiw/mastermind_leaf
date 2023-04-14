@@ -1,6 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
-import 'package:mastermind_leaf/library/global-variables.dart';
+import 'package:mastermind_leaf/library/global_variables.dart';
 
 class GameController {
   List<PinColor> combination = [

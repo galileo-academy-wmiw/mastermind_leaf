@@ -2,7 +2,7 @@ import 'dart:math';
 
 import 'package:audioplayers/audioplayers.dart';
 import 'package:flutter/material.dart';
-import 'package:mastermind_leaf/library/global-variables.dart';
+import 'package:mastermind_leaf/library/global_variables.dart';
 import 'package:mastermind_leaf/screens/score_screen.dart';
 import '../classes/score_pin.dart';
 import '../classes/code_pin.dart';
@@ -104,7 +104,7 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
       if(soundEnabled){
         audioPlayer.play(AssetSource('audio/bleep.wav'));
       }
-      
+
       //make codepins non interactive
       for (int i = 0; i < 4; i++) {
         pins[i].pinActive = false;
@@ -192,14 +192,14 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Container(
+                SizedBox(
                   height: rowWidth/12,
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [scorePins[0], scorePins[1]]),
                 ),
-                Container(
+                SizedBox(
                   height: rowWidth/12,
                   child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,

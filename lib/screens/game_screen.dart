@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import 'package:mastermind_leaf/classes/game_row.dart';
-import 'package:mastermind_leaf/screens/score_screen.dart';
 
 class GameScreen extends StatefulWidget {
   GameScreen({Key? key}) : super(key: key);
@@ -28,6 +27,7 @@ class _GameScreenState extends State<GameScreen> with AutomaticKeepAliveClientMi
 
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     //add the first row
     if(gameRows.isEmpty){
       addRow();

@@ -1,10 +1,6 @@
 import 'package:shared_preferences/shared_preferences.dart';
 import 'dart:async';
 
-
-//DEFAULT VALUES
-
-
 void saveSettingsBool(String key, bool value) async{
   SharedPreferences prefs = await SharedPreferences.getInstance();
   prefs.setBool(key, value);

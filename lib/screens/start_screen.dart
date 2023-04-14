@@ -1,7 +1,7 @@
 
 import 'package:audioplayers/audioplayers.dart';
-import 'package:mastermind_leaf/library/global-variables.dart';
-import 'package:mastermind_leaf/library/settingFunctions.dart';
+import 'package:mastermind_leaf/library/global_variables.dart';
+import 'package:mastermind_leaf/library/setting_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:mastermind_leaf/main.dart';
 import 'package:mastermind_leaf/library/styles.dart';
@@ -45,7 +45,7 @@ class StartScreen extends StatelessWidget {
                     }
                     gameController.startNewGame(snapshot.data);//turns hardcoded for now
                     gameScreen = GameScreen();
-                    Navigator.push(context, MaterialPageRoute(builder: (context) => AppTree())
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => const AppTree())
                     );
                   },
                 );

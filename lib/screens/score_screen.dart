@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mastermind_leaf/library/styles.dart';
-import 'package:mastermind_leaf/library/global-variables.dart';
-import 'package:mastermind_leaf/library/settingFunctions.dart';
+import 'package:mastermind_leaf/library/global_variables.dart';
+import 'package:mastermind_leaf/library/setting_functions.dart';
 import 'package:mastermind_leaf/classes/code_pin.dart';
 import 'package:mastermind_leaf/main.dart';
 import 'package:mastermind_leaf/screens/game_screen.dart';
@@ -11,7 +11,7 @@ class ScoreScreen extends StatelessWidget {
   bool gameFinished;
   List<PinColor> combination;
 
-  ScoreScreen(this.gameFinished, this.turnsTaken, this.combination);
+  ScoreScreen(this.gameFinished, this.turnsTaken, this.combination, {super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -49,10 +49,10 @@ class ScoreScreen extends StatelessWidget {
                         gameController.startNewGame(snapshot.data); //turns is currently hard coded
                         gameScreen = GameScreen();
                         Navigator.pushReplacement(context,
-                            MaterialPageRoute(builder: (context) => AppTree()));
+                            MaterialPageRoute(builder: (context) => const AppTree()));
                       },
                       child: Row(
-                        children: [
+                        children: const [
                           Text('Play Again?')
                         ],
                       )
@@ -82,7 +82,7 @@ class ScoreScreen extends StatelessWidget {
                   ],
                 ),
               ),
-              Text(
+              const Text(
                 "you've been defeated by the evil Captain Seagull",
                 style: paragraphStyle,
               ),
@@ -97,10 +97,10 @@ class ScoreScreen extends StatelessWidget {
                           gameController.startNewGame(snapshot.data); //turns is currently hard coded
                           gameScreen = GameScreen();
                           Navigator.pushReplacement(context,
-                              MaterialPageRoute(builder: (context) => AppTree()));
+                              MaterialPageRoute(builder: (context) => const AppTree()));
                         },
                         child: Row(
-                          children: [
+                          children: const [
                             Text('Play Again?')
                           ],
                         )

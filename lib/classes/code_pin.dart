@@ -1,7 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:mastermind_leaf/library/global-variables.dart';
+import 'package:mastermind_leaf/library/global_variables.dart';
 
 class CodePin extends StatefulWidget {
   CodePin(this.pinActive, this.currentColor, {super.key});
@@ -25,7 +25,7 @@ class _CodePinState extends State<CodePin> {
   int index = 0;
 
   Color currentColor = Colors.black;
-  AssetImage currentSprite = AssetImage('assets/images/sprites/Skull.png');
+  AssetImage currentSprite = const AssetImage('assets/images/sprites/Skull.png');
 
 
   void callSetState() {
