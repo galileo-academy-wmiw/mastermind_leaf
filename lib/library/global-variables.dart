@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-
+bool soundEnabled = true;
 enum PinColor { empty, red, yellow, green, blue, purple, orange }
 
 enum Answer {

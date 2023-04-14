@@ -5,15 +5,25 @@ import 'package:mastermind_leaf/library/styles.dart';
 class SettingsScreen extends StatefulWidget {
   const SettingsScreen({Key? key}) : super(key: key);
 
-
   @override
   State<SettingsScreen> createState() => _SettingsScreenState();
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
+
+  late Future<int> settingTurns;
+  late Future<bool> settingSoundEnabled;
   settingsIntToDouble(int myInt){
     //this function only exists because i can't directly call toDouble on snapshot.data
     return myInt.toDouble();
+  }
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    settingTurns = loadSettingsInt('settingTurns', 12);
+    settingSoundEnabled = loadSettingsBool('settingSoundEnabled', true);
   }
 
   @override
@@ -36,7 +46,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   style: paragraphStyle,
                 ),
                 FutureBuilder<bool>(
-                  future: loadSettingsBool('settingSoundEnabled', true),
+                  future: settingSoundEnabled,
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
                     if(snapshot.hasData){
                       return Switch(
@@ -44,6 +54,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           onChanged: (value) {
                             setState(() {
                               saveSettingsBool('settingSoundEnabled', value);
+                              settingSoundEnabled = loadSettingsBool('settingSoundEnabled', true);
                             });
                           });
                     }else{
@@ -52,6 +63,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           onChanged: (value) {
                             setState(() {
                               saveSettingsBool('settingSoundEnabled', value);
+                              settingSoundEnabled = loadSettingsBool('settingSoundEnabled', true);
                             });
                           });
                     }
@@ -74,7 +86,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               children: [
                 const Text('10', style: paragraphStyle),
                 FutureBuilder<int>(
-                  future: loadSettingsInt('settingTurns', 12),
+                  future: settingTurns,
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
                     if(snapshot.hasData){
                       return Slider.adaptive(
@@ -85,6 +97,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           onChanged: (double value) {
                             setState(() {
                               saveSettingsInt('settingTurns', value.round());
+                              settingTurns = loadSettingsInt('settingTurns', 12);
                             });
                           });
                     }else{
@@ -96,6 +109,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                           onChanged: (double value) {
                             setState(() {
                               saveSettingsInt('settingTurns', value.round());
+                              settingTurns = loadSettingsInt('settingTurns', 12);
                             });
                           });
                     }
