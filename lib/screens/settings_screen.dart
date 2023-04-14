@@ -38,13 +38,24 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 FutureBuilder<bool>(
                   future: loadSettingsBool('settingSoundEnabled', true),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
-                    return Switch(
-                        value: snapshot.data,
-                        onChanged: (value) {
-                          setState(() {
-                            saveSettingsBool('settingSoundEnabled', value);
+                    if(snapshot.hasData){
+                      return Switch(
+                          value: snapshot.data,
+                          onChanged: (value) {
+                            setState(() {
+                              saveSettingsBool('settingSoundEnabled', value);
+                            });
                           });
-                        });
+                    }else{
+                      return Switch(
+                          value: true,
+                          onChanged: (value) {
+                            setState(() {
+                              saveSettingsBool('settingSoundEnabled', value);
+                            });
+                          });
+                    }
+
                   }
                 ),
               ],
@@ -65,16 +76,30 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 FutureBuilder<int>(
                   future: loadSettingsInt('settingTurns', 12),
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
-                    return Slider.adaptive(
-                        min: 10,
-                        max: 20,
-                        divisions: 10,
-                        value: settingsIntToDouble(snapshot.data),
-                        onChanged: (double value) {
-                          setState(() {
-                            saveSettingsInt('settingTurns', value.round());
+                    if(snapshot.hasData){
+                      return Slider.adaptive(
+                          min: 10,
+                          max: 20,
+                          divisions: 10,
+                          value: settingsIntToDouble(snapshot.data),
+                          onChanged: (double value) {
+                            setState(() {
+                              saveSettingsInt('settingTurns', value.round());
+                            });
                           });
-                        });
+                    }else{
+                      return Slider.adaptive(
+                          min: 10,
+                          max: 20,
+                          divisions: 10,
+                          value: 12,
+                          onChanged: (double value) {
+                            setState(() {
+                              saveSettingsInt('settingTurns', value.round());
+                            });
+                          });
+                    }
+
                   }
                 ),
                 const Text(
