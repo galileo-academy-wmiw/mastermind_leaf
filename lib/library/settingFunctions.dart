@@ -3,8 +3,6 @@ import 'dart:async';
 
 
 //DEFAULT VALUES
-bool settingSoundEnabled = true;
-int settingTurns = 12;
 
 
 void saveSettingsBool(String key, bool value) async{

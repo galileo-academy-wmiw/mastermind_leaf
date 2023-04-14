@@ -29,7 +29,7 @@ class _GameScreenState extends State<GameScreen> with AutomaticKeepAliveClientMi
   @override
   Widget build(BuildContext context) {
     //add the first row
-    if(gameRows.length == 0){
+    if(gameRows.isEmpty){
       addRow();
     }
 

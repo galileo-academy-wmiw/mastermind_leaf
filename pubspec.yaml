@@ -68,6 +68,7 @@ flutter:
     - assets/audio/badBleep.wav
     - assets/images/seagull.jpg
     - assets/images/rubber-duck.jpeg
+    - assets/images/sprites/Arrow.png
     - assets/images/sprites/RedGem.png
     - assets/images/sprites/YellowGem.png
     - assets/images/sprites/GreenGem.png

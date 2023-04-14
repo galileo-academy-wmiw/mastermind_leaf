@@ -176,7 +176,7 @@ class _GameRowState extends State<GameRow> with SingleTickerProviderStateMixin {
                         padding: EdgeInsets.all(3.0),
                         child: Image(
                           fit: BoxFit.fill,
-                          image: AssetImage('assets/images/sprites/placeholder.png')
+                          image: AssetImage('assets/images/sprites/Arrow.png')
                         ),
                       ),
                     )

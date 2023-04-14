@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:mastermind_leaf/library/settings.dart';
+import 'package:mastermind_leaf/library/settingFunctions.dart';
 import 'package:mastermind_leaf/library/styles.dart';
 
 class SettingsScreen extends StatefulWidget {
-  SettingsScreen({Key? key}) : super(key: key);
+  const SettingsScreen({Key? key}) : super(key: key);
 
 
   @override
@@ -11,7 +11,10 @@ class SettingsScreen extends StatefulWidget {
 }
 
 class _SettingsScreenState extends State<SettingsScreen> {
-  double turnsDouble = settingTurns.toDouble();//this value is just for the slider to slide around right, turns don't accept
+  settingsIntToDouble(int myInt){
+    //this function only exists because i can't directly call toDouble on snapshot.data
+    return myInt.toDouble();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -32,14 +35,18 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   'Sound:',
                   style: paragraphStyle,
                 ),
-                Switch(
-                    value: settingSoundEnabled,
-                    onChanged: (value) {
-                      setState(() {
-                        settingSoundEnabled = value;
-                        saveSettingsBool('settingSoundEnabled', value);
-                      });
-                    }),
+                FutureBuilder<bool>(
+                  future: loadSettingsBool('settingSoundEnabled', true),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    return Switch(
+                        value: snapshot.data,
+                        onChanged: (value) {
+                          setState(() {
+                            saveSettingsBool('settingSoundEnabled', value);
+                          });
+                        });
+                  }
+                ),
               ],
             ),
             Row(
@@ -55,24 +62,33 @@ class _SettingsScreenState extends State<SettingsScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 const Text('10', style: paragraphStyle),
-                Slider.adaptive(
-                    min: 10,
-                    max: 20,
-                    value: turnsDouble,
-                    onChanged: (double value) {
-                      setState(() {
-                        turnsDouble = value;
-                        settingTurns = value.round();
-                        saveSettingsInt('settingTurns', value.round());
-                      });
-                    }),
+                FutureBuilder<int>(
+                  future: loadSettingsInt('settingTurns', 12),
+                  builder: (BuildContext context, AsyncSnapshot snapshot) {
+                    return Slider.adaptive(
+                        min: 10,
+                        max: 20,
+                        divisions: 10,
+                        value: settingsIntToDouble(snapshot.data),
+                        onChanged: (double value) {
+                          setState(() {
+                            saveSettingsInt('settingTurns', value.round());
+                          });
+                        });
+                  }
+                ),
                 const Text(
                   '20',
                   style: paragraphStyle,
                 ),
               ],
             ),
-            Center(child: Text(settingTurns.toString(), style: paragraphStyle))
+            Center(child: FutureBuilder<int>(
+              future: loadSettingsInt('settingTurns', 12),
+              builder: (BuildContext context, AsyncSnapshot snapshot) {
+                return Text(snapshot.data.toString(), style: paragraphStyle);
+              }
+            ))
           ],
         ),
       ),

@@ -1,5 +1,6 @@
 
 import 'package:audioplayers/audioplayers.dart';
+import 'package:mastermind_leaf/library/settingFunctions.dart';
 import 'package:flutter/material.dart';
 import 'package:mastermind_leaf/main.dart';
 import 'package:mastermind_leaf/library/styles.dart';
@@ -24,21 +25,28 @@ class StartScreen extends StatelessWidget {
             const Image(
               image: AssetImage('assets/images/seagull.jpg'),
             ),
-            ElevatedButton(
-              style: startButtonStyle,
-              child: Column(
-                children: const [
-                  Icon(Icons.arrow_forward),
-                  Text('Start The Game')
-                ],
-              ),
-              onPressed: () {
-                audioPlayer.play(AssetSource('audio/introBleep.wav'));
-                gameController.startNewGame(12);//turns hardcoded for now
-                gameScreen = GameScreen();
-                Navigator.push(context, MaterialPageRoute(builder: (context) => AppTree())
+            FutureBuilder<int>(
+              future: loadSettingsInt('settingTurns', 12),
+              builder: (BuildContext context,AsyncSnapshot snapshot) {
+                return ElevatedButton(
+                  style: startButtonStyle,
+                  child: Column(
+                    children: const [
+                      Icon(Icons.arrow_forward),
+                      Text('Start The Game')
+                    ],
+                  ),
+                  onPressed: () {
+                    int printText = snapshot.data;
+                    print('starting new game with $printText turns');
+                    audioPlayer.play(AssetSource('audio/introBleep.wav'));
+                    gameController.startNewGame(snapshot.data);//turns hardcoded for now
+                    gameScreen = GameScreen();
+                    Navigator.push(context, MaterialPageRoute(builder: (context) => AppTree())
+                    );
+                  },
                 );
-              },
+              }
             ),
           ],
         ),
