@@ -80,6 +80,10 @@ flutter:
     - assets/images/sprites/IconController.png
     - assets/images/sprites/IconGear.png
     - assets/images/sprites/IconInfo.png
+    - assets/images/sprites/TitleScreen.png
+    - assets/images/sprites/InfoScreen.png
+    - assets/images/sprites/Victory.png
+    - assets/images/sprites/Defeat.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

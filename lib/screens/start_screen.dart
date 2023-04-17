@@ -26,7 +26,7 @@ class StartScreen extends StatelessWidget {
                child: const Text('MasterMind', style: titleStyle,)
             ),
             const Image(
-              image: AssetImage('assets/images/seagull.jpg'),
+              image: AssetImage('assets/images/sprites/TitleScreen.png'),
             ),
             FutureBuilder<int>(
               future: settingTurns,

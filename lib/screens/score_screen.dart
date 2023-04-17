@@ -24,6 +24,7 @@ class ScoreScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const Image(image: AssetImage("assets/images/sprites/Victory.png")),
               Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -72,6 +73,7 @@ class ScoreScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              const Image(image: AssetImage('assets/images/sprites/Defeat.png')),
               Center(
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.center,

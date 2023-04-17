@@ -21,7 +21,7 @@ class InfoScreen extends StatelessWidget {
                 'The evil captain Seagull has taken the treasures of the noble pirate ducks. Will you help them reclaim their treasure by beating the fiendish seagull at his own game?',
                 style: paragraphStyle),
             const Image(
-              image: AssetImage('assets/images/rubber-duck.jpeg'),
+              image: AssetImage('assets/images/sprites/InfoScreen.png'),
             ),
             const Center(
                 child: Text(
