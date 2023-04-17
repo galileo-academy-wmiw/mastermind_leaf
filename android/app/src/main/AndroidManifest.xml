@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mastermind_leaf">
    <application
-        android:label="mastermind_leaf"
+        android:label="Pirate Mastermind"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity
