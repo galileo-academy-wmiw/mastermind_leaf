@@ -68,9 +68,9 @@ class AppTree extends StatelessWidget {
         bottomNavigationBar: const TabBar(
           labelColor: Colors.black,
           tabs: [
-            Tab(icon:Icon(Icons.sports_esports, color: Colors.amber,)),
-            Tab(icon:Icon(Icons.info, color: Colors.amber,)),
-            Tab(icon: Icon(Icons.settings, color: Colors.amber,),)
+            Tab(icon: Image(image: AssetImage('assets/images/sprites/IconController.png'))),
+            Tab(icon: Image(image: AssetImage('assets/images/sprites/IconInfo.png'))),
+            Tab(icon: Image(image: AssetImage('assets/images/sprites/IconGear.png'),)),
           ],
         ),
       ),
