@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:audioplayers/audioplayers.dart';
+import 'package:flutter/services.dart';
+
 
 import 'package:mastermind_leaf/classes/gamecontroller.dart';
 import 'package:mastermind_leaf/library/global_variables.dart';
@@ -13,15 +15,24 @@ GameController gameController = GameController();
 GameScreen gameScreen = GameScreen();
 AudioPlayer audioPlayer = AudioPlayer();
 
-setSoundEnabled() async{
+setSoundEnabledOnStartup() async{
   soundEnabled = await loadSettingsBool('settingSoundEnabled', true);
 }
 
 void main() {
-  setSoundEnabled();
+
+  //lock device orientation
+  WidgetsFlutterBinding.ensureInitialized();
+  SystemChrome.setPreferredOrientations([
+    DeviceOrientation.portraitUp,
+    DeviceOrientation.portraitDown,
+  ]);
+
+
+  setSoundEnabledOnStartup();
   gameController.startNewGame(12);
+
   runApp(const AppRoot());
-  audioPlayer.setSource(AssetSource('audio/bleep.wav'));
 }
 
 
