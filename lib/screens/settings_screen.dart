@@ -29,6 +29,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Center(
         child: ListView(
@@ -92,29 +93,35 @@ class _SettingsScreenState extends State<SettingsScreen> {
                   future: settingTurns,
                   builder: (BuildContext context, AsyncSnapshot snapshot) {
                     if(snapshot.hasData){
-                      return Slider.adaptive(
-                          min: 10,
-                          max: 20,
-                          divisions: 10,
-                          value: settingsIntToDouble(snapshot.data),
-                          onChanged: (double value) {
-                            setState(() {
-                              saveSettingsInt('settingTurns', value.round());
-                              settingTurns = loadSettingsInt('settingTurns', 12);
-                            });
-                          });
+                      return SizedBox(
+                        width: (screenWidth/12)*9,
+                        child: Slider.adaptive(
+                            min: 10,
+                            max: 20,
+                            divisions: 10,
+                            value: settingsIntToDouble(snapshot.data),
+                            onChanged: (double value) {
+                              setState(() {
+                                saveSettingsInt('settingTurns', value.round());
+                                settingTurns = loadSettingsInt('settingTurns', 12);
+                              });
+                            }),
+                      );
                     }else{
-                      return Slider.adaptive(
-                          min: 10,
-                          max: 20,
-                          divisions: 10,
-                          value: 12,
-                          onChanged: (double value) {
-                            setState(() {
-                              saveSettingsInt('settingTurns', value.round());
-                              settingTurns = loadSettingsInt('settingTurns', 12);
-                            });
-                          });
+                      return SizedBox(
+                        width: (screenWidth/12)*9,
+                        child: Slider.adaptive(
+                            min: 10,
+                            max: 20,
+                            divisions: 10,
+                            value: 12,
+                            onChanged: (double value) {
+                              setState(() {
+                                saveSettingsInt('settingTurns', value.round());
+                                settingTurns = loadSettingsInt('settingTurns', 12);
+                              });
+                            }),
+                      );
                     }
 
                   }
